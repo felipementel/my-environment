@@ -7,13 +7,12 @@ choco feature enable -n=allowGlobalConfirmation;
 <# programs to install #>
 @(
 "git"
-,"netfx-4.8-devpack"
-,"microsoft-edge"
+,"dotnet-5.0-sdk"
 ,"dotnetcore-sdk"
+,"microsoft-edge"
 ,"visualstudio2019professional"
 ,"microsoft-windows-terminal"
 ,"azure-cli"
-,"cmder"
 ,"wireshark"
 ,"westwindwebsurge"
 ,"sql-server-management-studio"
@@ -23,15 +22,17 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"docker-desktop"
 ,"nodejs-lts"
 ,"postman"
-,"notepadplusplus"
 ,"vim"
-,"sublimetext3"
-,"typora"
 ,"microsoft-teams") + ($pins = @("vscode")) | % { choco install $_ };
 
 <# avoiding future upgrades of these following programs. #> $pins | % { choco pin add -n="$_" }; 
 
 <# excluded 
 ,"archi"
+,"cmder"
 ,"hyper"
+,"netfx-4.8-devpack"
+,"notepadplusplus"
+,"sublimetext3"
+,"typora"
 #>
