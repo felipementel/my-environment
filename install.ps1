@@ -1,3 +1,5 @@
+#https://github.com/JanDeDobbeleer/oh-my-posh
+
 dotnet tool install --global dotnet-reportgenerator-globaltool
 dotnet tool install --global dotnet trace-trace
 
