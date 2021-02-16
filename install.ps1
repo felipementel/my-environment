@@ -18,6 +18,8 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"visualstudio2019professional"
 ,"microsoft-windows-terminal"
 ,"azure-cli"
+,"azurepowershell"
+,"azcopy"
 ,"wireshark"
 ,"westwindwebsurge"
 ,"sql-server-management-studio"
