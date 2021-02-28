@@ -16,6 +16,7 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"dotnetcore-sdk"
 ,"microsoft-edge"
 ,"visualstudio2019professional"
+,"azure-functions-core-tools-3 --params "'/x64'""
 ,"microsoft-windows-terminal"
 ,"azure-cli"
 ,"gh"
