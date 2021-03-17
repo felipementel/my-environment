@@ -1,7 +1,7 @@
 #https://github.com/JanDeDobbeleer/oh-my-posh
 
 dotnet tool install --global dotnet-reportgenerator-globaltool
-dotnet tool install --global dotnet trace-trace
+dotnet tool install --global dotnet-trace
 
 <# chocolatey setup #> 
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')); 
