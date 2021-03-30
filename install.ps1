@@ -2,6 +2,7 @@
 
 dotnet tool install --global dotnet-reportgenerator-globaltool
 dotnet tool install --global dotnet-trace
+dotnet tool install --global dotnet-sonarscanner
 
 <# chocolatey setup #> 
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')); 
