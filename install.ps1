@@ -31,6 +31,7 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"mobaxterm"
 ,"docker-desktop"
 ,"nodejs-lts"
+,"nvm"
 ,"postman"
 ,"vim"
 ,"microsoft-teams") + ($pins = @("vscode")) | % { choco install $_ };
