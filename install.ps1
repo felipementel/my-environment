@@ -34,7 +34,8 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"nvm"
 ,"postman"
 ,"vim"
-,"microsoft-teams") + ($pins = @("vscode")) | % { choco install $_ };
+,"microsoft-teams"
+,"terraform") + ($pins = @("vscode")) | % { choco install $_ };
 
 <# avoiding future upgrades of these following programs. #> $pins | % { choco pin add -n="$_" }; 
 
