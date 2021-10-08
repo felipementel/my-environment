@@ -14,6 +14,7 @@ choco feature enable -n=allowGlobalConfirmation;
 @(
 "git"
 ,"dotnet-5.0-sdk"
+,"azure-functions-core-tools"
 ,"dotnetcore-sdk"
 ,"microsoft-edge"
 ,"visualstudio2019professional"
