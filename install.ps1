@@ -10,14 +10,16 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 <# allowing globally confirmation #> 
 choco feature enable -n=allowGlobalConfirmation;
 
-<# programs to install #>
+<# poll #>
 @(
 "git"
+,"dotnetcore-sdk"
 ,"dotnet-5.0-sdk"
+,"dotnet-6.0-sdk"
 ,"azure-functions-core-tools"
 ,"dotnetcore-sdk"
 ,"microsoft-edge"
-,"visualstudio2019professional"
+,"visualstudio2022enterprise"
 ,"azure-functions-core-tools-3 --params "'/x64'""
 ,"microsoft-windows-terminal"
 ,"azure-cli"
