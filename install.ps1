@@ -33,6 +33,7 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"sql-server-management-studio"
 ,"robo3t"
 ,"azure-data-studio"
+,"dbeaver"
 ,"mobaxterm"
 ,"nodejs-lts"
 ,"nvm"
