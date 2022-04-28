@@ -35,7 +35,6 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"robo3t"
 ,"azure-data-studio"
 ,"mobaxterm"
-,"docker-desktop"
 ,"nodejs-lts"
 ,"nvm"
 ,"postman"
@@ -55,4 +54,5 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"notepadplusplus"
 ,"sublimetext3"
 ,"typora"
+,"docker-desktop"
 #>
