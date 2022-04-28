@@ -18,7 +18,6 @@ choco feature enable -n=allowGlobalConfirmation;
 @(
 "git"
 ,"dotnetcore-sdk"
-,"dotnet-5.0-sdk"
 ,"dotnet-6.0-sdk"
 ,"dotnetcore-sdk"
 ,"microsoft-edge"
@@ -47,6 +46,7 @@ choco feature enable -n=allowGlobalConfirmation;
 <# avoiding future upgrades of these following programs. #> $pins | % { choco pin add -n="$_" }; 
 
 <# excluded 
+,"dotnet-5.0-sdk"
 ,"archi"
 ,"cmder"
 ,"hyper"
