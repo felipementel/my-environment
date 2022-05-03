@@ -1,4 +1,7 @@
 #https://github.com/JanDeDobbeleer/oh-my-posh
+# npm
+# npm -g i typescript ts-node
+
 
 dotnet tool install --global dotnet-reportgenerator-globaltool
 dotnet tool install --global dotnet-trace
