@@ -3,13 +3,13 @@
 # npm -g i typescript ts-node
 
 
-dotnet tool install --global dotnet-reportgenerator-globaltool
-dotnet tool install --global dotnet-trace
-dotnet tool install --global dotnet-sonarscanner
-dotnet tool install --global dotnet-aspnet-codegenerator
-dotnet tool install --global dotnet-counters
-dotnet tool install --global dotnet-ef
-dotnet tool install --global dotnet-monitor
+dotnet tool install dotnet-reportgenerator-globaltool --global
+dotnet tool install dotnet-trace --global
+dotnet tool install dotnet-sonarscanner --global
+dotnet tool install dotnet-aspnet-codegenerator --global
+dotnet tool install dotnet-counters --global
+dotnet tool install dotnet-ef --global
+dotnet tool install dotnet-monitor --global
 
 <# chocolatey setup #> 
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')); 
