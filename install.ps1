@@ -24,6 +24,7 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"dotnet-6.0-sdk"
 ,"dotnetcore-sdk"
 ,"microsoft-edge"
+,"dotpeek"
 ,"visualstudio2022enterprise"
 ,"azure-functions-core-tools-4 --params "'/x64'""
 ,"microsoft-windows-terminal"
