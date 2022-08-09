@@ -47,7 +47,8 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"terraform"
 ,"kubernetes-cli"
 ,"kubernetes-helm"
-,"lens") + ($pins = @("vscode")) | % { choco install $_ };
+,"lens"
+,"screenpresso") + ($pins = @("vscode")) | % { choco install $_ };
 
 <# avoiding future upgrades of these following programs. #> $pins | % { choco pin add -n="$_" }; 
 
