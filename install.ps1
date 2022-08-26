@@ -22,7 +22,6 @@ choco feature enable -n=allowGlobalConfirmation;
 "git"
 ,"dotnetcore-sdk"
 ,"dotnet-6.0-sdk"
-,"dotnetcore-sdk"
 ,"microsoft-edge"
 ,"dotpeek"
 ,"visualstudio2022enterprise"
