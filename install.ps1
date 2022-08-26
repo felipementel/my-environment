@@ -38,7 +38,6 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"azure-data-studio"
 ,"dbeaver"
 ,"mobaxterm"
-,"nodejs-lts"
 ,"nvm"
 ,"postman"
 ,"vim"
@@ -52,6 +51,7 @@ choco feature enable -n=allowGlobalConfirmation;
 <# avoiding future upgrades of these following programs. #> $pins | % { choco pin add -n="$_" }; 
 
 <# excluded 
+,"nodejs-lts"
 ,"dotnet-5.0-sdk"
 ,"archi"
 ,"cmder"
