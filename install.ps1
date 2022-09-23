@@ -29,6 +29,7 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"azure-functions-core-tools-4 --params "'/x64'""
 ,"microsoft-windows-terminal"
 ,"azure-cli"
+,"microsoft-openjdk"
 ,"gh"
 ,"azurepowershell"
 ,"azcopy"
@@ -41,7 +42,6 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"mobaxterm"
 ,"nvm"
 ,"postman"
-,"vim"
 ,"microsoft-teams"
 ,"terraform"
 ,"kubernetes-cli"
@@ -62,4 +62,5 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"sublimetext3"
 ,"typora"
 ,"docker-desktop"
+,"vim"
 #>
