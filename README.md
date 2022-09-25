@@ -7,3 +7,14 @@
     
     
 + Faça um café.
+
+
+# O que instalar no WSL2?
+````
+mc
+htop
+docker.io
+docker-compose
+kubernetes-cli
+azure-cli
+````
