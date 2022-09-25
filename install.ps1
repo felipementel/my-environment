@@ -47,7 +47,8 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"kubernetes-cli"
 ,"kubernetes-helm"
 ,"lens"
-,"screenpresso") + ($pins = @("vscode")) | % { choco install $_ };
+,"zoomit"
+) + ($pins = @("vscode")) | % { choco install $_ };
 
 <# avoiding future upgrades of these following programs. #> $pins | % { choco pin add -n="$_" }; 
 
@@ -63,4 +64,5 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"typora"
 ,"docker-desktop"
 ,"vim"
+,"screenpresso"
 #>
