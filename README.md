@@ -18,3 +18,12 @@ docker-compose
 kubernetes-cli
 azure-cli
 ````
+
+# Como deixar o terminal chic?
+> Oh my Posh
+````
+https://github.com/JanDeDobbeleer/oh-my-posh
+````
+# O que instalar via npm?
+
+1. npm -g i typescript ts-node
