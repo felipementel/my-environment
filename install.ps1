@@ -25,7 +25,6 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"dotpeek"
 ,"ngrok"
 ,"visualstudio2022enterprise"
-,"azure-functions-core-tools-4 --params "'/x64'""
 ,"microsoft-windows-terminal"
 ,"azure-cli"
 ,"microsoft-openjdk"
@@ -48,6 +47,7 @@ choco feature enable -n=allowGlobalConfirmation;
 <# avoiding future upgrades of these following programs. #> $pins | % { choco pin add -n="$_" }; 
 
 <# excluded 
+,"azure-functions-core-tools-4 --params "'/x64'""
 ,"microsoft-edge"
 ,"microsoft-teams"
 ,"gh"
