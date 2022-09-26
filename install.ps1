@@ -1,8 +1,3 @@
-#https://github.com/JanDeDobbeleer/oh-my-posh
-# npm
-# npm -g i typescript ts-node
-
-
 dotnet tool install dotnet-reportgenerator-globaltool --global
 dotnet tool install dotnet-trace --global
 dotnet tool install dotnet-sonarscanner --global
