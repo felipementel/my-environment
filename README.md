@@ -27,3 +27,8 @@ https://github.com/JanDeDobbeleer/oh-my-posh
 # O que instalar via npm?
 
 1. npm -g i typescript ts-node
+
+# Plugins no Visual Studio
+> Sonar Lint
+
+> Fine Code Coverage
