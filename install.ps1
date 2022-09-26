@@ -22,7 +22,6 @@ choco feature enable -n=allowGlobalConfirmation;
 "git"
 ,"dotnetcore-sdk"
 ,"dotnet-6.0-sdk"
-,"microsoft-edge"
 ,"dotpeek"
 ,"ngrok"
 ,"visualstudio2022enterprise"
@@ -30,10 +29,7 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"microsoft-windows-terminal"
 ,"azure-cli"
 ,"microsoft-openjdk"
-,"gh"
-,"azurepowershell"
 ,"azcopy"
-,"wireshark"
 ,"westwindwebsurge"
 ,"sql-server-management-studio"
 ,"robo3t"
@@ -42,7 +38,6 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"mobaxterm"
 ,"nvm"
 ,"postman"
-,"microsoft-teams"
 ,"terraform"
 ,"kubernetes-cli"
 ,"kubernetes-helm"
@@ -53,6 +48,11 @@ choco feature enable -n=allowGlobalConfirmation;
 <# avoiding future upgrades of these following programs. #> $pins | % { choco pin add -n="$_" }; 
 
 <# excluded 
+,"microsoft-edge"
+,"microsoft-teams"
+,"gh"
+,"azurepowershell"
+,"wireshark"
 ,"nodejs-lts"
 ,"dotnet-5.0-sdk"
 ,"archi"
