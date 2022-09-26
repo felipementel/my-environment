@@ -22,7 +22,7 @@ azure-cli
 # Como deixar o terminal chic?
 > Oh my Posh
 ````
-https://github.com/JanDeDobbeleer/oh-my-posh
+https://ohmyposh.dev/
 ````
 # O que instalar via npm?
 
