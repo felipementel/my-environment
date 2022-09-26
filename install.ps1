@@ -1,11 +1,3 @@
-dotnet tool install dotnet-reportgenerator-globaltool --global
-dotnet tool install dotnet-trace --global
-dotnet tool install dotnet-sonarscanner --global
-dotnet tool install dotnet-aspnet-codegenerator --global
-dotnet tool install dotnet-counters --global
-dotnet tool install dotnet-ef --global
-dotnet tool install dotnet-monitor --global
-
 <# chocolatey setup #> 
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')); 
 ​
@@ -40,6 +32,14 @@ choco feature enable -n=allowGlobalConfirmation;
 ) + ($pins = @("vscode")) | % { choco install $_ };
 
 <# avoiding future upgrades of these following programs. #> $pins | % { choco pin add -n="$_" }; 
+
+dotnet tool install dotnet-reportgenerator-globaltool --global
+dotnet tool install dotnet-trace --global
+dotnet tool install dotnet-sonarscanner --global
+dotnet tool install dotnet-aspnet-codegenerator --global
+dotnet tool install dotnet-counters --global
+dotnet tool install dotnet-ef --global
+dotnet tool install dotnet-monitor --global
 
 <# excluded 
 ,"azure-functions-core-tools-4 --params "'/x64'""
