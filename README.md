@@ -8,6 +8,10 @@
     
 + Faça um café.
 
+PS: Lembrar de trocar o path do PowerShell Core no Windows Terminal para C:\Program Files\PowerShell\7\pwsh.exe
+
+> Habilitar: Windows + V
+
 
 # O que instalar no WSL2?
 ````
