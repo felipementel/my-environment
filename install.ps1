@@ -14,6 +14,7 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"visualstudio2022enterprise"
 ,"microsoft-windows-terminal"
 ,"azure-cli"
+,"powershell-core"
 ,"microsoftazurestorageexplorer"
 ,"microsoft-openjdk"
 ,"azcopy"
