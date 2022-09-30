@@ -35,6 +35,8 @@ choco feature enable -n=allowGlobalConfirmation;
 
 <# avoiding future upgrades of these following programs. #> $pins | % { choco pin add -n="$_" }; 
 
+. $PROFILE
+
 dotnet tool install dotnet-reportgenerator-globaltool --global
 dotnet tool install dotnet-trace --global
 dotnet tool install dotnet-sonarscanner --global
