@@ -7,31 +7,38 @@ choco feature enable -n=allowGlobalConfirmation;
 <# poll #>
 @(
 "git"
-,"dotnetcore-sdk"
-,"dotnet-6.0-sdk"
-,"dotpeek"
-,"ngrok"
-,"visualstudio2022enterprise"
-,"microsoft-windows-terminal"
-,"azure-cli"
-,"powershell-core"
-,"microsoftazurestorageexplorer"
-,"microsoft-openjdk"
-,"azcopy"
-,"westwindwebsurge"
-,"sql-server-management-studio"
-,"robo3t"
-,"azure-data-studio"
-,"dbeaver"
-,"mobaxterm"
-,"nvm"
-,"postman"
-,"terraform"
-,"kubernetes-cli"
-,"kubernetes-helm"
-,"lens"
-,"zoomit"
-) + ($pins = @("vscode")) | % { choco install $_ };
+"dotnetcore-sdk",
+"dotnet-6.0-sdk",
+"dotpeek",
+"ngrok",
+"visualstudio2022enterprise",
+"microsoft-windows-terminal",
+"azure-cli",
+"powershell-core",
+"microsoftazurestorageexplorer",
+"microsoft-openjdk",
+"azcopy",
+"westwindwebsurge",
+"sql-server-management-studio",
+"robo3t",
+"azure-data-studio",
+"dbeaver",
+"mobaxterm",
+"nvm",
+"postman",
+"terraform",
+"kubernetes-cli",
+"kubernetes-helm",
+"lens",
+"zoomit") + 
+  ($pins = @(
+  "microsoft-windows-terminal", 
+  "vscode", 
+  "robo3t", 
+  "visualstudio2022enterprise",
+  "azure-data-studio",
+  "postman")) | 
+% { choco install $_ };
 
 <# avoiding future upgrades of these following programs. #> $pins | % { choco pin add -n="$_" }; 
 
