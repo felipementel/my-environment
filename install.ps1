@@ -7,8 +7,9 @@ choco feature enable -n=allowGlobalConfirmation;
 <# poll #>
 @(
 "git"
-"dotnetcore-sdk",
+"dotnet-7.0-sdk",
 "dotnet-6.0-sdk",
+"dotnetcore-sdk",
 "dotpeek",
 "ngrok",
 "visualstudio2022enterprise",
