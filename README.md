@@ -12,6 +12,14 @@ PS: Lembrar de trocar o path do PowerShell Core no Windows Terminal para C:\Prog
 
 > Habilitar: Windows + V
 
+# O que configurar no git
+
+````
+git config --global init.defaultBranch main
+
+git config --global user.name 'Felipe Augusto'
+git config user.email 'EMAIL' (por pasta de projeto)
+````
 
 # O que instalar no WSL2?
 ````
@@ -20,6 +28,7 @@ htop
 docker.io
 docker-compose
 kubernetes-cli
+helm
 azure-cli
 ````
 
