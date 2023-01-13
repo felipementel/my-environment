@@ -14,7 +14,7 @@ PS: Lembrar de trocar o path do PowerShell Core no Windows Terminal para C:\Prog
 
 # O que configurar no git
 
-````
+````git
 git config --global init.defaultBranch main
 
 git config --global user.name 'Felipe Augusto'
@@ -34,12 +34,18 @@ azure-cli
 
 # Como deixar o terminal chic?
 > Oh my Posh
-````
+````url
 https://ohmyposh.dev/
 ````
 # O que instalar via npm?
 
-1. npm -g i typescript ts-node
+````node
+npm -g i typescript ts-node
+````
+List global installed packages: 
+````node
+npm list -g --depth 0
+````
 
 # Plugins no Visual Studio
 > Sonar Lint
