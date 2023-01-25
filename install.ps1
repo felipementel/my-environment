@@ -26,6 +26,7 @@ choco feature enable -n=allowGlobalConfirmation;
 "dbeaver",
 "mobaxterm",
 "nvm",
+"yarn",
 "postman",
 "terraform",
 "kubernetes-cli",
