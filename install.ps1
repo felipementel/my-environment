@@ -52,10 +52,13 @@ dotnet tool install --global dotnet-aspnet-codegenerator
 dotnet tool install --global dotnet-coverage
 dotnet tool install --global dotnet-sonarscanner
 dotnet tool install --global dotnet-trace
-
 dotnet tool install --global dotnet-counters
 dotnet tool install --global dotnet-monitor
 dotnet tool install --global dotnet-ef
+
+. $PROFILE
+
+git config --global init.defaultBranch main
 
 <# excluded 
 ,"azure-functions-core-tools-4 --params "'/x64'""
