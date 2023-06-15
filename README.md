@@ -37,6 +37,20 @@ azure-cli
 ````url
 https://ohmyposh.dev/
 ````
++ Icones para o terminal.
++  Rodar o comando o powershell
+```
+Install-Module -Name Terminal-Icons -Repository PSGallery
+```
+Depois alterar o arquivo de profile. Digitar o comando:
+```
+notepad $PROFILE
+```
+Adicionar o item
+```
+Import-Module -Name Terminal-Icons
+```
+
 # O que instalar via npm?
 
 ````node
