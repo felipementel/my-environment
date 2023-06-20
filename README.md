@@ -22,6 +22,7 @@ git config user.email 'EMAIL' (por pasta de projeto)
 ````
 
 # O que instalar no WSL2?
+### apt-get install 
 ````
 mc
 htop
@@ -30,7 +31,7 @@ docker-compose
 kubernetes-cli
 helm
 azure-cli
-install dotnet-sdk-7.0
+dotnet-sdk-7.0
 ````
 
 # Como deixar o terminal chic?
