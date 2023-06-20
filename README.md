@@ -30,6 +30,7 @@ docker-compose
 kubernetes-cli
 helm
 azure-cli
+install dotnet-sdk-7.0
 ````
 
 # Como deixar o terminal chic?
