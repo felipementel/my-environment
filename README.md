@@ -1,18 +1,17 @@
-# Chocolatey
+# 1. Chocolatey :boom:
 
 + Abra o powershell como adminstrador;
 + Execute o comando abaixo;
 
     Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/felipementel/my-environment/main/install.ps1'))
-    
-    
+
 + Faça um café.
 
 PS: Lembrar de trocar o path do PowerShell Core no Windows Terminal para C:\Program Files\PowerShell\7\pwsh.exe
 
-> Habilitar: Windows + V
+# 2. Habilitar Windows + V :notes:
 
-# O que configurar no git
+# 3. Configurar no git :cop:
 
 ````git
 git config --global init.defaultBranch main
@@ -21,7 +20,7 @@ git config --global user.name 'Felipe Augusto'
 git config user.email 'EMAIL' (por pasta de projeto)
 ````
 
-# O que instalar no WSL2?
+# 4. O que instalar no WSL2? :triangular_flag_on_post:
 ### apt-get install 
 ````
 mc
@@ -34,12 +33,12 @@ azure-cli
 dotnet-sdk-7.0
 ````
 
-# Como deixar o terminal chic?
+# 5. Como deixar o terminal chic? :dizzy:
 > Oh my Posh
 ````url
 https://ohmyposh.dev/
 ````
-+ Icones para o terminal.
+### 5.1 Icones para o terminal. :shell:
 +  Rodar o comando o powershell
 ```
 Install-Module -Name Terminal-Icons -Repository PSGallery
@@ -53,7 +52,7 @@ Adicionar o item
 Import-Module -Name Terminal-Icons
 ```
 
-# O que instalar via npm?
+# 6. O que instalar via npm? :telephone_receiver:
 
 ````node
 npm -g i typescript ts-node
@@ -63,7 +62,7 @@ List global installed packages:
 npm list -g --depth 0
 ````
 
-# Plugins no Visual Studio
+# 7. Plugins no Visual Studio :mushroom:
 > Sonar Lint
 
 > Fine Code Coverage
