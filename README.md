@@ -51,6 +51,20 @@ Adicionar o item
 ```
 Import-Module -Name Terminal-Icons
 ```
+### Git & WSL-2
+
+touch .bashrc
+
+vi .bashrc
+
+> WSL-2
+````
+eval "$(oh-my-posh init bash --config ~/sim-web.omp.json)"
+````
+> Git
+````
+eval "$(oh-my-posh --init --shell bash --config $HOME/AppData/Local/Programs/oh-my-posh/themes/clean-detailed.omp.json)"
+````
 
 # 6. O que instalar via npm? :telephone_receiver:
 
