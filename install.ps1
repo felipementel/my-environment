@@ -45,7 +45,7 @@ choco feature enable -n=allowGlobalConfirmation;
 
 <# avoiding future upgrades of these following programs. #> $pins | % { choco pin add -n="$_" }; 
 
-. $PROFILE
+& $PROFILE
 
 dotnet tool install --global dotnet-reportgenerator-globaltool
 dotnet tool install --global dotnet-aspnet-codegenerator
@@ -56,7 +56,7 @@ dotnet tool install --global dotnet-counters
 dotnet tool install --global dotnet-monitor
 dotnet tool install --global dotnet-ef
 
-. $PROFILE
+& $PROFILE
 
 git config --global init.defaultBranch main
 
