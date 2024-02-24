@@ -59,6 +59,10 @@ dotnet tool install --global dotnet-ef
 
 & $PROFILE
 
+Update-Help
+
+& $PROFILE
+
 git config --global init.defaultBranch main
 
 <# excluded 
