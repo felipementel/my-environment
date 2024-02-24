@@ -52,11 +52,12 @@ Adicionar o item
 Import-Module -Name Terminal-Icons
 ```
 ### Git & WSL-2
-
+````
 touch .bashrc
-
+````
+````
 vi .bashrc
-
+````
 > WSL-2
 ````
 eval "$(oh-my-posh init bash --config ~/sim-web.omp.json)"
