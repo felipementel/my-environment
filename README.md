@@ -70,7 +70,7 @@ eval "$(oh-my-posh --init --shell bash --config $HOME/AppData/Local/Programs/oh-
 # 6. O que instalar via npm? :telephone_receiver:
 
 ````node
-npm -g i typescript ts-node
+npm -g i typescript ts-node postman newman-parallel spectral
 ````
 List global installed packages: 
 ````node
