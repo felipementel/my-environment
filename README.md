@@ -43,11 +43,7 @@ https://ohmyposh.dev/
 ```
 Install-Module -Name Terminal-Icons -Repository PSGallery
 ```
-Depois alterar o arquivo de profile. Digitar o comando:
-```
-notepad $PROFILE
-```
-Adicionar o item
+Agora precisamos instalat o oh-my-posh e depois o arquivo "notepad $PROFILE" deverá ficar assim: 
 ```
 oh-my-posh init pwsh --config 'C:\Users\<USER_NAME>\AppData\Local\Programs\oh-my-posh\themes\slim.omp.json' | Invoke-Expression
 
