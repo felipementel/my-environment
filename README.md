@@ -49,7 +49,10 @@ notepad $PROFILE
 ```
 Adicionar o item
 ```
+oh-my-posh init pwsh --config 'C:\Users\<USER_NAME>\AppData\Local\Programs\oh-my-posh\themes\slim.omp.json' | Invoke-Expression
+
 Import-Module -Name Terminal-Icons
+
 ```
 ### Git & WSL-2
 ````
