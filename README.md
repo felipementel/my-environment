@@ -29,8 +29,8 @@ docker.io
 docker-compose
 kubernetes-cli
 helm
-azure-cli
-dotnet-sdk-7.0
+dotnet-sdk-8.0
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash (azure-cli)
 ````
 
 # 5. Como deixar o terminal chic? :dizzy:
