@@ -6,42 +6,40 @@ choco feature enable -n=allowGlobalConfirmation;
 
 <# poll #>
 @(
-"git",
-"dotnet-8.0-sdk",
-"dotnet-7.0-sdk",
-"dotnet-6.0-sdk",
-"dotnetcore-sdk",
-"dotpeek",
-"ngrok",
-"visualstudio2022enterprise",
-"microsoft-windows-terminal",
-"azure-cli",
-"powershell-core",
-"microsoftazurestorageexplorer",
-"microsoft-openjdk",
-"azcopy",
-"westwindwebsurge",
-"sql-server-management-studio",
-"robo3t",
-"azure-data-studio",
-"dbeaver",
-"mobaxterm",
-"nvm",
-"yarn",
-"postman",
-"terraform",
-"kubernetes-cli",
-"kubernetes-helm",
-"lens",
-"zoomit",
-"k-litecodecpackfull") + 
+"git"
+,"dotnet-8.0-sdk"
+,"dotnet-7.0-sdk"
+,"dotnet-6.0-sdk"
+,"dotnetcore-sdk"
+,"dotpeek"
+,"ngrok"
+,"visualstudio2022enterprise"
+,"microsoft-windows-terminal"
+,"azure-cli"
+,"powershell-core"
+,"microsoftazurestorageexplorer"
+,"microsoft-openjdk"
+,"azcopy"
+,"westwindwebsurge"
+,"robo3t"
+,"azure-data-studio"
+,"dbeaver"
+,"mobaxterm"
+,"nvm"
+,"postman"
+,"terraform"
+,"kubernetes-cli"
+,"kubernetes-helm"
+,"lens"
+,"zoomit"
+,"k-litecodecpackfull") + 
   ($pins = @(
-  "microsoft-windows-terminal", 
-  "vscode", 
-  "robo3t", 
-  "visualstudio2022enterprise",
-  "azure-data-studio",
-  "postman")) | 
+  "microsoft-windows-terminal"
+  ,"vscode"
+  ,"robo3t"
+  ,"visualstudio2022enterprise"
+  ,"azure-data-studio"
+  ,"postman")) | 
 % { choco install $_ };
 
 <# avoiding future upgrades of these following programs. #> $pins | % { choco pin add -n="$_" }; 
@@ -67,8 +65,10 @@ git config --global init.defaultBranch main
 
 <# excluded 
 ,"azure-functions-core-tools-4 --params "'/x64'""
+,"sql-server-management-studio"
 ,"microsoft-edge"
 ,"microsoft-teams"
+,"yarn"
 ,"gh"
 ,"azurepowershell"
 ,"wireshark"
