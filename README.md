@@ -48,7 +48,6 @@ Agora precisamos instalat o oh-my-posh e depois o arquivo "notepad $PROFILE" dev
 oh-my-posh init pwsh --config 'C:\Users\<USER_NAME>\AppData\Local\Programs\oh-my-posh\themes\slim.omp.json' | Invoke-Expression
 
 Import-Module -Name Terminal-Icons
-
 ```
 ### Git & WSL-2
 ````
