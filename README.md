@@ -28,7 +28,7 @@ htop
 kubernetes-cli
 helm
 dotnet-sdk-8.0
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash (azure-cli)
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ````
 
 ````
