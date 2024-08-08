@@ -25,12 +25,14 @@ git config user.email 'EMAIL' (por pasta de projeto)
 ````
 mc
 htop
-docker.io
-docker-compose
 kubernetes-cli
 helm
 dotnet-sdk-8.0
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash (azure-cli)
+````
+
+````
+https://get.docker.com/
 ````
 
 # 5. Como deixar o terminal chic? :dizzy:
