@@ -23,7 +23,7 @@ git config user.email 'EMAIL' (por pasta de projeto)
 # 4. O que instalar no WSL2? :triangular_flag_on_post:
 ### apt-get install 
 ````
-apt-get install mc htop kubernetes-cli helm dotnet-sdk-8.0 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+apt-get install mc htop kubernetes-cli helm dotnet-sdk-8.0 && curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ````
 
 ````
