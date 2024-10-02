@@ -4,9 +4,12 @@
 + Execute o comando abaixo;
 
 ````
-    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/felipementel/my-environment/main/install.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/felipementel/my-environment/main/chocolatey.ps1'))
 ````
 
+````
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/felipementel/my-environment/main/winget.txt'))
+````
 + Faça um café.
 
 PS: Lembrar de trocar o path do PowerShell Core no Windows Terminal para C:\Program Files\PowerShell\7\pwsh.exe
@@ -33,34 +36,110 @@ kubernetes-cli helm
 ````
 https://get.docker.com/
 ````
-
-# 5. Como deixar o terminal chic? :dizzy:
-> Oh my Posh
-````url
-https://ohmyposh.dev/
+Para testar:
 ````
-### 5.1 Icones para o terminal. :shell:
-+  Rodar o comando o powershell
-```
-Install-Module -Name Terminal-Icons -Repository PSGallery
-```
-Agora precisamos instalat o oh-my-posh e depois o arquivo "notepad $PROFILE" deverá ficar assim: 
-```
-oh-my-posh init pwsh --config 'C:\Users\<USER_NAME>\AppData\Local\Programs\oh-my-posh\themes\slim.omp.json' | Invoke-Expression
+docker container run hello-world
+````
 
+Caso dê problema de permissão, execute os comandos abaixo
+Add docker group
+````
+$ sudo groupadd docker
+````
+Add your current user to docker group
+````
+$ sudo usermod -aG docker $USER
+````
+Switch session to docker group
+````
+$ newgrp - docker
+````
+Run an example to test
+````
+$ docker run hello-world
+````
+=====
+
+# POWERSHELL
+
+## Install Terminal Icons
+
+````
+Install-Module -Name Terminal-Icons -Repository PSGallery
+````
+## Install OhMyPosh
+````
+$ winget install JanDeDobbeleer.OhMyPosh -s winget	
+````
+````
+$ New-Item -Path $PROFILE -Type File -Force
+````
+````
+$ oh-my-posh font install
+````
+  OU instale direto a fonte
+````
+$ oh-my-posh font install meslo
+````
+````     
+$ notepad $PROFILE
+````
+Se não conseguir criar o arquivo, execute o comando abaixo primeiro e depois execute o comando acima
+````   
+$ New-Item -Path $PROFILE -Type File -Force
+````
+
+Feito a criação do arquivo, adicione os itens abaixo no arquivo
+````
+oh-my-posh init pwsh --config 'C:\Users\felipe.augusto\AppData\Local\Programs\oh-my-posh\themes\craver.omp.json' | Invoke-Expression
 Import-Module -Name Terminal-Icons
-```
-### Git & WSL-2
+````
+
+Comando para recarregar:
+````
+. $PROFILE
+````
+E não se esqueça !!!
+
+# !!! Configurar Fonte !!!
+
+
+## Ubuntu
+
+````
+sudo su
+````
+````
+wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+````
+````
+chmod +x /usr/local/bin/oh-my-posh
+````
+
+Agora precisamos criar os arquivos que ficam as configurações
 ````
 touch .bashrc
 ````
 ````
 vi .bashrc
 ````
-> WSL-2
+Coloque esses valores dentro do arquivo
 ````
-eval "$(oh-my-posh init bash --config ~/sim-web.omp.json)"
+eval "$(oh-my-posh --init --shell bash --config  /mnt/c/users/felipe.augusto/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json)"
 ````
+Saia do modo SU
+````
+exit
+````
+Recarregue o terminal
+````
+exec bash
+````
+
+E não se esqueça !!!
+
+# !!! Configurar Fonte !!!
+
 > Git
 ````
 eval "$(oh-my-posh --init --shell bash --config $HOME/AppData/Local/Programs/oh-my-posh/themes/clean-detailed.omp.json)"
