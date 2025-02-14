@@ -136,6 +136,15 @@ Recarregue o terminal
 exec bash
 ````
 
+Configuração do WSL NetworkMode Mirrored (espelhada)
+
+````
+@"
+[wsl2]
+networkingMode=mirrored
+"@ | Out-File "$env:USERPROFILE\.wslconfig" -Encoding ASCII
+````
+
 E não se esqueça !!!
 
 # !!! Configurar Fonte !!!
