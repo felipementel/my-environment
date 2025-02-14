@@ -3,10 +3,11 @@
 + Abra o powershell como adminstrador;
 + Execute o comando abaixo;
 
+# Chocolatey
 ````
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/felipementel/my-environment/main/chocolatey.ps1'))
 ````
-
+# Winget
 ````
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/felipementel/my-environment/main/winget.ps1'))
 ````
