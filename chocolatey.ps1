@@ -53,6 +53,7 @@ dotnet tool install --global dotnet-trace
 dotnet tool install --global dotnet-counters
 dotnet tool install --global dotnet-monitor
 dotnet tool install --global dotnet-ef
+dotnet tool install --global Microsoft.dotnet-interactive
 
 & $PROFILE
 
