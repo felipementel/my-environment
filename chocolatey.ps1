@@ -57,6 +57,10 @@ dotnet tool install --global Microsoft.dotnet-interactive
 
 & $PROFILE
 
+gh extension install github/gh-copilot
+
+& $PROFILE
+
 Update-Help
 
 & $PROFILE
