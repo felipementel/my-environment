@@ -18,4 +18,29 @@ winget install --id Postman.Postman --source winget; `
 winget install --id Zoom.Zoom.EXE --source winget; `
 winget install --id Microsoft.AzureDataStudio; `
 winget install --id JanDeDobbeleer.OhMyPosh --soruce winget; `
-winget install --id Telegram.TelegramDesktop --source winget
+winget install --id Telegram.TelegramDesktop --source winget;
+
+
+& $PROFILE
+
+dotnet tool install --global dotnet-reportgenerator-globaltool
+dotnet tool install --global dotnet-aspnet-codegenerator
+dotnet tool install --global dotnet-coverage
+dotnet tool install --global dotnet-sonarscanner
+dotnet tool install --global dotnet-trace
+dotnet tool install --global dotnet-counters
+dotnet tool install --global dotnet-monitor
+dotnet tool install --global dotnet-ef
+dotnet tool install --global Microsoft.dotnet-interactive
+
+& $PROFILE
+
+gh extension install github/gh-copilot
+
+& $PROFILE
+
+Update-Help
+
+& $PROFILE
+
+git config --global init.defaultBranch main
