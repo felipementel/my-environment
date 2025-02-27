@@ -68,7 +68,7 @@ $ docker run hello-world
 ````
 Install-Module -Name Terminal-Icons -Repository PSGallery
 ````
-## Install OhMyPosh
+## Install OhMyPosh on Windows
 ````
 $ winget install JanDeDobbeleer.OhMyPosh -s winget	
 ````
@@ -100,12 +100,12 @@ Comando para recarregar:
 ````
 . $PROFILE
 ````
+
 E não se esqueça !!!
 
-# !!! Configurar Fonte !!!
+# !!! Configurar Fonte no terminal de forma manual !!!
 
-
-## Ubuntu
+## ## Install OhMyPosh on Ubuntu
 
 ````
 sudo su
@@ -119,14 +119,14 @@ chmod +x /usr/local/bin/oh-my-posh
 
 Agora precisamos criar os arquivos que ficam as configurações
 ````
-touch .bashrc
+touch ~/.bashrc
 ````
 ````
-vi .bashrc
+vi ~/.bashrc
 ````
 Coloque esses valores dentro do arquivo
 ````
-eval "$(oh-my-posh --init --shell bash --config  /mnt/c/users/felipe.augusto/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json)"
+eval "$(oh-my-posh --init --shell bash --config /mnt/c/users/felipe.augusto/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json)"
 ````
 Saia do modo SU
 ````
@@ -136,6 +136,10 @@ Recarregue o terminal
 ````
 exec bash
 ````
+
+E não se esqueça !!!
+
+# !!! Configurar Fonte no terminal de forma manual !!!
 
 Configuração do WSL NetworkMode Mirrored (espelhada)
 
