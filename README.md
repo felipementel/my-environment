@@ -27,13 +27,22 @@ git config user.email 'EMAIL' (por pasta de projeto)
 ````
 
 # 4. O que instalar no WSL2? :triangular_flag_on_post:
-### apt-get install 
+### Diversos
 ````
 sudo apt-get install mc htop jq dotnet-sdk-8.0 && curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-
-kubernetes-cli helm
 ````
-
+### Kubernetes
+````
+sudo apt-get install kubernetes-cli helm
+````
+### yq
+````
+sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+````
+````
+sudo chmod a+x /usr/local/bin/yq
+````
+### Docker
 ````
 https://get.docker.com/
 ````
@@ -42,7 +51,9 @@ Para testar:
 docker container run hello-world
 ````
 
-Caso dê problema de permissão, execute os comandos abaixo
+> [!WARNING]
+> Caso dê problema de permissão, execute os comandos abaixo
+
 Add docker group
 ````
 $ sudo groupadd docker
@@ -61,7 +72,7 @@ $ docker run hello-world
 ````
 =====
 
-# POWERSHELL
+# Windows / PowerShell Core
 
 ## Install Terminal Icons
 
@@ -101,20 +112,16 @@ Comando para recarregar:
 . $PROFILE
 ````
 
-E não se esqueça !!!
+> [!NOTE]
+> Configurar Fonte no terminal de forma manual !!!
 
-# !!! Configurar Fonte no terminal de forma manual !!!
-
-## ## Install OhMyPosh on Ubuntu
+## WSL2 Ubuntu
 
 ````
-sudo su
+sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
 ````
 ````
-wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
-````
-````
-chmod +x /usr/local/bin/oh-my-posh
+sudo chmod +x /usr/local/bin/oh-my-posh
 ````
 
 Agora precisamos criar os arquivos que ficam as configurações
@@ -136,10 +143,8 @@ Recarregue o terminal
 ````
 exec bash
 ````
-
-E não se esqueça !!!
-
-# !!! Configurar Fonte no terminal de forma manual !!!
+> [!NOTE]
+> Configurar Fonte no terminal de forma manual !!!
 
 Configuração do WSL NetworkMode Mirrored (espelhada)
 
