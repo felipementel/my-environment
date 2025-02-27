@@ -126,7 +126,7 @@ vi ~/.bashrc
 ````
 Coloque esses valores dentro do arquivo
 ````
-eval "$(oh-my-posh --init --shell bash --config /mnt/c/users/felipe.augusto/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json)"
+eval "$(oh-my-posh init shell bash --config /mnt/c/users/felipe.augusto/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json)"
 ````
 Saia do modo SU
 ````
