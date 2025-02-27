@@ -31,7 +31,9 @@ choco feature enable -n=allowGlobalConfirmation;
 ,"kubernetes-helm"
 ,"lens"
 ,"zoomit"
-,"k-litecodecpackfull") + 
+,"k-litecodecpackfull"
+,"insomnia-rest-api-client"
+,"devtoys") + 
   ($pins = @(
   "microsoft-windows-terminal"
   ,"vscode"
