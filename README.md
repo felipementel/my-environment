@@ -112,7 +112,7 @@ Comando para recarregar:
 . $PROFILE
 ````
 
-> [!NOTE]
+> [!IMPORTANT]
 > Configurar Fonte no terminal de forma manual !!!
 
 ## WSL2 Ubuntu
@@ -143,7 +143,7 @@ Recarregue o terminal
 ````
 exec bash
 ````
-> [!NOTE]
+> [!IMPORTANT]
 > Configurar Fonte no terminal de forma manual !!!
 
 Configuração do WSL NetworkMode Mirrored (espelhada)
@@ -154,10 +154,6 @@ Configuração do WSL NetworkMode Mirrored (espelhada)
 networkingMode=mirrored
 "@ | Out-File "$env:USERPROFILE\.wslconfig" -Encoding ASCII
 ````
-
-E não se esqueça !!!
-
-# !!! Configurar Fonte !!!
 
 > Git
 ````
