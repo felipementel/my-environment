@@ -133,7 +133,7 @@ vi ~/.bashrc
 ````
 Coloque esses valores dentro do arquivo
 ````
-eval "$(oh-my-posh init shell bash --config /mnt/c/users/felipe.augusto/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json)"
+eval "$(oh-my-posh init bash --config /mnt/c/users/felipe.augusto/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json)"
 ````
 Saia do modo SU
 ````
@@ -157,7 +157,7 @@ networkingMode=mirrored
 
 > Git
 ````
-eval "$(oh-my-posh --init --shell bash --config $HOME/AppData/Local/Programs/oh-my-posh/themes/clean-detailed.omp.json)"
+eval "$(oh-my-posh init bash --config $HOME/AppData/Local/Programs/oh-my-posh/themes/clean-detailed.omp.json)"
 ````
 
 # 6. O que instalar via npm? :telephone_receiver:
