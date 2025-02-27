@@ -19,7 +19,9 @@ winget install --id Zoom.Zoom.EXE --source winget; `
 winget install --id Microsoft.AzureDataStudio; `
 winget install --id JanDeDobbeleer.OhMyPosh --soruce winget; `
 winget install --id Telegram.TelegramDesktop --source winget;
-
+winget install --id Insomnia.Insomnia --source winget;
+winget install`--id DevToys-app.DevToys --source winget;
+winget install --id dbeaver.dbeaver --source winget;
 
 & $PROFILE
 
