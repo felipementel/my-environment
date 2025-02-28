@@ -15,7 +15,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 
 PS: Lembrar de trocar o path do PowerShell Core no Windows Terminal para C:\Program Files\PowerShell\7\pwsh.exe
 
-# on Windows
+# on Windows 🪟
 ## 2. Habilitar Windows + V :notes:
 
 ## 3. Configurar no git :cop:
@@ -69,9 +69,7 @@ Comando para recarregar:
 > [!IMPORTANT]
 > Configurar Fonte no terminal de forma manual !!!
 
-## 
-
-# O que instalar no WSL2 Ubuntu? :triangular_flag_on_post:
+# O que instalar no WSL2 Ubuntu? 🐧
 ### Diversos
 ````
 sudo apt-get install mc htop jq dotnet-sdk-8.0 dotnet-sdk-9.0 && curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
