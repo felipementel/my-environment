@@ -29,7 +29,7 @@ git config user.email 'EMAIL' (por pasta de projeto)
 # 4. O que instalar no WSL2? :triangular_flag_on_post:
 ### Diversos
 ````
-sudo apt-get install mc htop jq dotnet-sdk-8.0 && curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+sudo apt-get install mc htop jq dotnet-sdk-8.0 dotnet-sdk-9.0 && curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ````
 ### Kubernetes
 ````
