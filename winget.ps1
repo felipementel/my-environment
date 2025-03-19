@@ -30,15 +30,21 @@ foreach ($package in $packages) {
 
 & $PROFILE
 
-dotnet tool install --global dotnet-reportgenerator-globaltool
-dotnet tool install --global dotnet-aspnet-codegenerator
-dotnet tool install --global dotnet-coverage
-dotnet tool install --global dotnet-sonarscanner
-dotnet tool install --global dotnet-trace
-dotnet tool install --global dotnet-counters
-dotnet tool install --global dotnet-monitor
-dotnet tool install --global dotnet-ef
-dotnet tool install --global Microsoft.dotnet-interactive
+$packagesDotNet = @(
+    "dotnet-reportgenerator-globaltool",
+    "dotnet-aspnet-codegenerator",
+    "dotnet-coverage",
+    "dotnet-sonarscanner",
+    "dotnet-trace",
+    "dotnet-counters",
+    "dotnet-monitor",
+    "dotnet-ef",
+    "Microsoft.dotnet-interactive"
+)
+
+foreach ($package in $packagesDotNet) {
+    dotnet tool install --global $package
+}
 
 & $PROFILE
 
