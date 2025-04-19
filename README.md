@@ -15,7 +15,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 
 PS: Lembrar de trocar o path do PowerShell Core no Windows Terminal para C:\Program Files\PowerShell\7\pwsh.exe
 
-# on Windows 🪟
+# O que instalar e configurar no Windows? 🪟
 ## 2. Habilitar Windows + V :notes:
 
 ## 3. Configurar no git :cop:
@@ -35,9 +35,6 @@ Install-Module -Name Terminal-Icons -Repository PSGallery
 ````
 ### Install OhMyPosh on Windows
 ````
-winget install JanDeDobbeleer.OhMyPosh -s winget	
-````
-````
 oh-my-posh font install
 ````
   OU instale direto a fonte
@@ -51,14 +48,13 @@ Se não conseguir criar o arquivo, execute o comando abaixo primeiro e depois ex
 ````   
 New-Item -Path $PROFILE -Type File -Force
 ````
-
-Feito a criação do arquivo, adicione os itens abaixo no arquivo
+### Feito a criação do arquivo, adicione os itens abaixo no arquivo
 ````
 oh-my-posh init pwsh --config 'C:\Users\felipe.augusto\AppData\Local\Programs\oh-my-posh\themes\craver.omp.json' | Invoke-Expression
 Import-Module -Name Terminal-Icons
 ````
 
-Comando para recarregar:
+### Comando para recarregar:
 ````
 . $PROFILE
 ````
@@ -66,7 +62,7 @@ Comando para recarregar:
 > [!IMPORTANT]
 > Configurar Fonte no terminal de forma manual !!!
 
-# O que instalar no WSL2 Ubuntu? 🐧
+# O que instalar e configurar no WSL2 Ubuntu? 🐧
 ### Diversos
 ````
 sudo apt-get install mc htop jq && curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
@@ -83,7 +79,10 @@ chmod +x ./dotnet-install.sh
 ````
 ### Kubernetes
 ````
-sudo apt-get install kubernetes-cli helm
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+````
+````
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ````
 ### yq
 ````
