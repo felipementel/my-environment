@@ -12,6 +12,7 @@ $packages = @(
     "3TSoftwareLabs.Robo3T",
     "Microsoft.DotNet.SDK.8",
     "Microsoft.DotNet.SDK.9",
+    "Microsoft.PowershellCore",
     "Logitech.LogiTune",
     "Mobatek.MobaXterm",
     "JanDeDobbeleer.OhMyPosh",
