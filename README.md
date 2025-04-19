@@ -69,7 +69,17 @@ Comando para recarregar:
 # O que instalar no WSL2 Ubuntu? 🐧
 ### Diversos
 ````
-sudo apt-get install mc htop jq dotnet-sdk-8.0 dotnet-sdk-9.0 && curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+sudo apt-get install mc htop jq && curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+````
+### .NET
+````
+curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh
+````
+````
+chmod +x ./dotnet-install.sh
+````
+````
+./dotnet-install.sh --channel 9.0
 ````
 ### Kubernetes
 ````
