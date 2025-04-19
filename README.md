@@ -35,24 +35,21 @@ Install-Module -Name Terminal-Icons -Repository PSGallery
 ````
 ### Install OhMyPosh on Windows
 ````
-$ winget install JanDeDobbeleer.OhMyPosh -s winget	
+winget install JanDeDobbeleer.OhMyPosh -s winget	
 ````
 ````
-$ New-Item -Path $PROFILE -Type File -Force
-````
-````
-$ oh-my-posh font install
+oh-my-posh font install
 ````
   OU instale direto a fonte
 ````
-$ oh-my-posh font install meslo
+oh-my-posh font install meslo
 ````
 ````     
-$ notepad $PROFILE
+notepad $PROFILE
 ````
 Se não conseguir criar o arquivo, execute o comando abaixo primeiro e depois execute o comando acima
 ````   
-$ New-Item -Path $PROFILE -Type File -Force
+New-Item -Path $PROFILE -Type File -Force
 ````
 
 Feito a criação do arquivo, adicione os itens abaixo no arquivo
@@ -99,19 +96,19 @@ docker container run hello-world
 
 Add docker group
 ````
-$ sudo groupadd docker
+sudo groupadd docker
 ````
 Add your current user to docker group
 ````
-$ sudo usermod -aG docker $USER
+sudo usermod -aG docker $USER
 ````
 Switch session to docker group
 ````
-$ newgrp - docker
+newgrp - docker
 ````
 Run an example to test
 ````
-$ docker run hello-world
+docker run hello-world
 ````
 ---
 ## Oh My Posh
