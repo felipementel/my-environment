@@ -17,7 +17,6 @@ $packages = @(
     "JanDeDobbeleer.OhMyPosh",
     "Postman.Postman",
     "Zoom.Zoom.EXE",
-    "Microsoft.AzureDataStudio",
     "Telegram.TelegramDesktop",
     "Insomnia.Insomnia",
     "DevToys-app.DevToys",
