@@ -12,7 +12,7 @@ foreach ($package in $packages) {
     winget install --id $package --source winget
 }
 
-& $PROFILE
+. $PROFILE
 
 $packagesDotNet = @(
     "dotnet-reportgenerator-globaltool",
@@ -30,14 +30,14 @@ foreach ($package in $packagesDotNet) {
     dotnet tool install --global $package
 }
 
-& $PROFILE
+. $PROFILE
 
 gh extension install github/gh-copilot
 
-& $PROFILE
+. $PROFILE
 
 Update-Help
 
-& $PROFILE
+. $PROFILE
 
 git config --global init.defaultBranch main
