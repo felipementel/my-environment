@@ -1,3 +1,4 @@
+# Lista de pacotes a instalar via Winget
 $packages = @(
     "CoreyButler.NVMforWindows",
     "Git.Git",
@@ -24,12 +25,30 @@ $packages = @(
     "dbeaver.dbeaver"
 )
 
+Write-Host "🔧 Instalando pacotes via Winget..." -ForegroundColor Cyan
 foreach ($package in $packages) {
-    winget install --id $package --source winget
+    if (-not (winget list --id $package)) {
+        Write-Host "📦 Instalando $package..." -ForegroundColor Yellow
+        winget install --id $package --source winget --accept-package-agreements --accept-source-agreements
+    } else {
+        Write-Host "✅ $package já está instalado." -ForegroundColor Green
+    }
 }
 
-& $PROFILE
+# Recarregar o perfil para garantir que o .NET esteja disponível no PATH
+Write-Host "`n🔄 Recarregando perfil do PowerShell após instalação de SDKs..." -ForegroundColor Cyan
+if (Test-Path $PROFILE) {
+    try {
+        . $PROFILE
+    } catch {
+        Write-Host "⚠️ Erro ao executar $PROFILE: $_" -ForegroundColor Red
+    }
+} else {
+    Write-Host "ℹ️ Criando arquivo de perfil do PowerShell vazio..." -ForegroundColor Yellow
+    New-Item -ItemType File -Path $PROFILE -Force | Out-Null
+}
 
+# Ferramentas .NET globais
 $packagesDotNet = @(
     "dotnet-reportgenerator-globaltool",
     "dotnet-aspnet-codegenerator",
@@ -42,18 +61,39 @@ $packagesDotNet = @(
     "Microsoft.dotnet-interactive"
 )
 
+Write-Host "`n🔧 Instalando ferramentas .NET globais..." -ForegroundColor Cyan
 foreach ($package in $packagesDotNet) {
-    dotnet tool install --global $package
+    if (dotnet tool list -g | Select-String $package) {
+        Write-Host "♻️ Atualizando $package..." -ForegroundColor Yellow
+        dotnet tool update --global $package
+    } else {
+        Write-Host "📦 Instalando $package..." -ForegroundColor Yellow
+        dotnet tool install --global $package
+    }
 }
 
-& $PROFILE
-
+# Extensão GitHub CLI Copilot
+Write-Host "`n🤖 Instalando extensão Copilot do GitHub CLI..." -ForegroundColor Cyan
 gh extension install github/gh-copilot
 
-& $PROFILE
+# Atualizar ajuda do PowerShell
+Write-Host "`n📚 Atualizando ajuda do PowerShell..." -ForegroundColor Cyan
+Update-Help -Force -ErrorAction SilentlyContinue
 
-Update-Help
-
-& $PROFILE
-
+# Configuração global do Git
+Write-Host "`n⚙️ Configurando Git..." -ForegroundColor Cyan
 git config --global init.defaultBranch main
+
+# Recarregar perfil final
+Write-Host "`n🔄 Recarregando perfil do PowerShell (final)..." -ForegroundColor Cyan
+if (Test-Path $PROFILE) {
+    try {
+        . $PROFILE
+    } catch {
+        Write-Host "⚠️ Erro ao executar $PROFILE: $_" -ForegroundColor Red
+    }
+} else {
+    Write-Host "ℹ️ Arquivo de perfil do PowerShell ainda não existe." -ForegroundColor Yellow
+}
+
+Write-Host "`n✅ Ambiente de desenvolvimento configurado com sucesso!" -ForegroundColor Green
