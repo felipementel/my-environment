@@ -1,37 +1,40 @@
 # Lista de pacotes a instalar via Winget
 $packages = @(
-    "CoreyButler.NVMforWindows",
-    "Git.Git",
-    "GitHub.cli",
-    "Microsoft.Azure.StorageExplorer",
-    "Microsoft.AzureCLI",
-    "k6.k6",
-    "Microsoft.OpenJDK.21",
-    "Microsoft.VisualStudioCode",
-    "Microsoft.VisualStudio.2022.Enterprise",
-    "CodecGuide.K-LiteCodecPack.Standard",
-    "3TSoftwareLabs.Robo3T",
-    "Microsoft.DotNet.SDK.8",
-    "Microsoft.DotNet.SDK.9",
-    "Microsoft.Powershell",
-    "Logitech.LogiTune",
-    "Mobatek.MobaXterm",
-    "JanDeDobbeleer.OhMyPosh",
-    "Postman.Postman",
-    "Zoom.Zoom.EXE",
-    "Telegram.TelegramDesktop",
-    "Insomnia.Insomnia",
-    "DevToys-app.DevToys",
-    "dbeaver.dbeaver"
+    @{ Id = "CoreyButler.NVMforWindows";              Executable = "$env:ProgramFiles\nodejs\nvm.exe" },
+    @{ Id = "Git.Git";                                Executable = "$env:ProgramFiles\Git\bin\git.exe" },
+    @{ Id = "GitHub.cli";                             Executable = "$env:ProgramFiles\GitHub CLI\gh.exe" },
+    @{ Id = "Microsoft.Azure.StorageExplorer";        Executable = "$env:LOCALAPPDATA\Programs\Microsoft Azure Storage Explorer\StorageExplorer.exe" },
+    @{ Id = "Microsoft.AzureCLI";                     Executable = "$env:ProgramFiles\Microsoft SDKs\Azure\CLI2\wbin\az.cmd" },
+    @{ Id = "k6.k6";                                  Executable = "$env:USERPROFILE\AppData\Local\Programs\k6\k6.exe" },
+    @{ Id = "Microsoft.OpenJDK.21";                   Executable = "$env:ProgramFiles\Microsoft\jdk-21.*\bin\java.exe" },
+    @{ Id = "Microsoft.VisualStudioCode";             Executable = "$env:LOCALAPPDATA\Programs\Microsoft VS Code\Code.exe" },
+    @{ Id = "Microsoft.VisualStudio.2022.Enterprise"; Executable = "$env:ProgramFiles\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\devenv.exe" },
+    @{ Id = "CodecGuide.K-LiteCodecPack.Standard";    Executable = "$env:ProgramFiles (x86)\K-Lite Codec Pack\Standard\CodecTweakTool.exe" },
+    @{ Id = "3TSoftwareLabs.Robo3T";                  Executable = "$env:ProgramFiles\Robo 3T\robo3t.exe" },
+    @{ Id = "Microsoft.DotNet.SDK.8";                 Executable = "$env:ProgramFiles\dotnet\sdk\8.*\dotnet.dll" },
+    @{ Id = "Microsoft.DotNet.SDK.9";                 Executable = "$env:ProgramFiles\dotnet\sdk\9.*\dotnet.dll" },
+    @{ Id = "Microsoft.Powershell";                   Executable = "$env:ProgramFiles\PowerShell\7\pwsh.exe" },
+    @{ Id = "Logitech.LogiTune";                      Executable = "$env:ProgramFiles\LogiTune\LogiTune.exe" },
+    @{ Id = "Mobatek.MobaXterm";                      Executable = "$env:ProgramFiles (x86)\Mobatek\MobaXterm\MobaXterm.exe" },
+    @{ Id = "JanDeDobbeleer.OhMyPosh";                Executable = "$env:USERPROFILE\AppData\Local\Programs\oh-my-posh\bin\oh-my-posh.exe" },
+    @{ Id = "Postman.Postman";                        Executable = "$env:LOCALAPPDATA\Postman\Postman.exe" },
+    @{ Id = "Zoom.Zoom.EXE";                          Executable = "$env:LOCALAPPDATA\Zoom\bin\Zoom.exe" },
+    @{ Id = "Telegram.TelegramDesktop";               Executable = "$env:LOCALAPPDATA\Programs\Telegram Desktop\Telegram.exe" },
+    @{ Id = "Insomnia.Insomnia";                      Executable = "$env:LOCALAPPDATA\Programs\Insomnia\Insomnia.exe" },
+    @{ Id = "DevToys-app.DevToys";                    Executable = "$env:LOCALAPPDATA\Programs\DevToys\DevToys.exe" },
+    @{ Id = "dbeaver.dbeaver";                        Executable = "$env:ProgramFiles\DBeaver\dbeaver.exe" }
 )
 
 Write-Host "🔧 Instalando pacotes via Winget..." -ForegroundColor Cyan
-foreach ($package in $packages) {
-    if (-not (winget list --id $package)) {
-        Write-Host "📦 Instalando $package..." -ForegroundColor Yellow
-        winget install --id $package --source winget --accept-package-agreements --accept-source-agreements
+foreach ($pkg in $packages) {
+    $wingetFound = winget list --id $pkg.Id | Out-String | Select-String $pkg.Id
+    $exeFound = Test-Path $pkg.Executable
+
+    if ($wingetFound -or $exeFound) {
+        Write-Host "✅ $($pkg.Id) já está instalado." -ForegroundColor Green
     } else {
-        Write-Host "✅ $package já está instalado." -ForegroundColor Green
+        Write-Host "📦 Instalando $($pkg.Id)..." -ForegroundColor Yellow
+        winget install --id $($pkg.Id) --source winget --accept-package-agreements --accept-source-agreements
     }
 }
 
@@ -41,7 +44,7 @@ if (Test-Path $PROFILE) {
     try {
         . $PROFILE
     } catch {
-        Write-Host "⚠️ Erro ao executar $PROFILE: $_" -ForegroundColor Red
+        Write-Host "⚠️ Erro ao executar `$PROFILE: $_" -ForegroundColor Red
     }
 } else {
     Write-Host "ℹ️ Criando arquivo de perfil do PowerShell vazio..." -ForegroundColor Yellow
@@ -90,7 +93,7 @@ if (Test-Path $PROFILE) {
     try {
         . $PROFILE
     } catch {
-        Write-Host "⚠️ Erro ao executar $PROFILE: $_" -ForegroundColor Red
+        Write-Host "⚠️ Erro ao executar `$PROFILE: $_" -ForegroundColor Red
     }
 } else {
     Write-Host "ℹ️ Arquivo de perfil do PowerShell ainda não existe." -ForegroundColor Yellow
