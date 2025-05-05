@@ -19,7 +19,6 @@ $packages = @(
     @{ Id = "Mobatek.MobaXterm" },
     @{ Id = "JanDeDobbeleer.OhMyPosh" },
     @{ Id = "Postman.Postman" },
-    @{ Id = "Zoom.Zoom.EXE" },
     @{ Id = "Telegram.TelegramDesktop" },
     @{ Id = "Insomnia.Insomnia" },
     @{ Id = "DevToys-app.DevToys" },
