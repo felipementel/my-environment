@@ -128,6 +128,16 @@ sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/
 sudo chmod +x /usr/local/bin/oh-my-posh
 ````
 
+GitHub CLI
+````
+sudo apt-add-repository https://cli.github.com/packages
+````
+````
+sudo apt update
+````
+````
+sudo apt install gh
+````
 Agora precisamos criar os arquivos que ficam as configurações
 ````
 touch ~/.bashrc
