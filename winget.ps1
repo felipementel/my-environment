@@ -13,6 +13,7 @@ $packages = @(
     @{ Id = "3TSoftwareLabs.Studio3T" },
     @{ Id = "Microsoft.DotNet.SDK.8" },
     @{ Id = "Microsoft.DotNet.SDK.9" },
+    @{ Id = "Microsoft.dotnet-interactive" },
     @{ Id = "Microsoft.Powershell" },
     @{ Id = "Logitech.LogiTune" },
     @{ Id = "Mobatek.MobaXterm" },
@@ -59,8 +60,7 @@ $packagesDotNet = @(
     "dotnet-trace",
     "dotnet-counters",
     "dotnet-monitor",
-    "dotnet-ef",
-    "Microsoft.dotnet-interactive"
+    "dotnet-ef"
 )
 
 Write-Host "`n🔧 Instalando ferramentas .NET globais..." -ForegroundColor Cyan
