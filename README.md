@@ -65,7 +65,7 @@ Import-Module -Name Terminal-Icons
 # O que instalar e configurar no WSL2 Ubuntu? 🐧
 ### Diversos
 ````
-sudo apt-get install mc htop jq && curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+sudo apt-get install mc htop jq dotnet-interactive && curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ````
 ### .NET
 ````
