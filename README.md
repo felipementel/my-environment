@@ -77,6 +77,13 @@ chmod +x ./dotnet-install.sh
 ````
 ./dotnet-install.sh --channel 9.0
 ````
+### configure as variaveis de ambiente
+````
+export DOTNET_ROOT=$HOME/.dotnet
+````
+````
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+````
 ### Kubernetes
 ````
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
