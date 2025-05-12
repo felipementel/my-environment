@@ -1,9 +1,9 @@
 {
-  "id": 5158083,
-  "name": "default",
+  "id": 5421571,
+  "name": "DEPLOY",
   "target": "branch",
   "source_type": "Repository",
-  "source": "felipementel/DEPLOY.KeyCloak.v1",
+  "source": "felipementel/DEPLOY.CosmosDBForNoSQL-v1",
   "enforcement": "active",
   "conditions": {
     "ref_name": {
@@ -23,12 +23,12 @@
     {
       "type": "pull_request",
       "parameters": {
-        "required_approving_review_count": 1,
+        "required_approving_review_count": 0,
         "dismiss_stale_reviews_on_push": false,
         "required_reviewers": [],
-        "require_code_owner_review": true,
+        "require_code_owner_review": false,
         "require_last_push_approval": false,
-        "required_review_thread_resolution": true,
+        "required_review_thread_resolution": false,
         "automatic_copilot_code_review_enabled": true,
         "allowed_merge_methods": [
           "merge",
@@ -36,18 +36,17 @@
           "rebase"
         ]
       }
-    },
-    {
-      "type": "creation"
-    },
-    {
-      "type": "update"
     }
   ],
   "bypass_actors": [
     {
       "actor_id": 2,
       "actor_type": "RepositoryRole",
+      "bypass_mode": "always"
+    },
+    {
+      "actor_id": 29110,
+      "actor_type": "Integration",
       "bypass_mode": "always"
     }
   ]
