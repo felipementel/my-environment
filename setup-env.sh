@@ -96,7 +96,7 @@ if ! grep -Fxq "$INIT_LINE" ~/.bashrc; then
 else
     echo "ℹ️ Configuração do Oh My Posh já existe no ~/.bashrc"
 
-     export POSH_THEME=$"/mnt/c/Users/$winUser/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json"
+    export POSH_THEME=$"/mnt/c/Users/$winUser/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json"
 fi
 
 echo -e "\n🔧 Instalando ferramentas .NET globais..."
@@ -124,7 +124,7 @@ do
 done
 
 echo -e "\n✅ Instalando o GitHub CLI"
-sudo apt-add-repository https://cli.github.com/packages
+sudo apt-add-repository -y https://cli.github.com/packages
 sudo apt install gh
 
 echo -e "\n✅ Removendo sources temporarios!"
