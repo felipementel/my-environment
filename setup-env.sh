@@ -47,7 +47,7 @@ sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/
 sudo chmod a+x /usr/local/bin/yq
 
 echo -e "\n📦 Baixando e instalando Docker"
-curl -fsSL https://get.docker.com -o install-docker.sh
+sudo curl -fsSL https://get.docker.com -o install-docker.sh
 sudo sh install-docker.sh
 sudo usermod -aG docker $(whoami)
 newgrp docker
