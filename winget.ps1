@@ -1,3 +1,8 @@
+Write-Host "Informações para configuração da conta Git"
+
+$nome = Read-Host "Digite seu nome: "
+$email = (Read-Host "Digite seu e-mail: ").ToLower()
+
 # Lista de pacotes a instalar via Winget
 $packages = @(
     @{ Id = "CoreyButler.NVMforWindows" },
@@ -84,7 +89,8 @@ Update-Help -Force -ErrorAction SilentlyContinue
 # Configuração global do Git
 Write-Host "`n🔧 Configurando Git... (Faça a configuracao do .gitignore manual depois)" -ForegroundColor Cyan
 git config --global init.defaultBranch main
-git config --global user.name 'Felipe Augusto'
+git config --global user.name $nome
+git config --global user.email $email
 
 # Recarregar perfil final
 Write-Host "`n🔄 Recarregando perfil do PowerShell (final)..." -ForegroundColor Cyan
@@ -98,24 +104,24 @@ if (Test-Path $PROFILE) {
     Write-Host "ℹ️ Arquivo de perfil do PowerShell ainda não existe." -ForegroundColor Yellow
 }
 
-Write-Host "`n✅ Configurando Terminal-Icons" -ForegroundColor Green
+Write-Host "`n✅ Instalando Terminal-Icons" -ForegroundColor Green
 Install-Module -Name Terminal-Icons -Repository PSGallery
 
 Write-Host "`n✅ Configurando Oh My Posh" -ForegroundColor Green
 
 Write-Host "`n✅    Instalando a fonte meslo" -ForegroundColor Green
-oh-my-posh font install
+oh-my-posh font install meslo
 
-Write-Host "`n✅    Cria o arquivo de perfil do PowerShell, se não existir" -ForegroundColor Green
+Write-Host "`n✅    Cria o arquivo de perfil do PowerShell" -ForegroundColor Green
 New-Item -Path $PROFILE -Type File -Force
 
-Write-Host "`n✅    Conteúdo que você quer escrever no arquivo" -ForegroundColor Green
+Write-Host "`n✅    Criando conteúdo para o arquivo do perfil" -ForegroundColor Green
 $conteudo = @"
-oh-my-posh init pwsh --config 'C:\Users\felipe.augusto\AppData\Local\Programs\oh-my-posh\themes\craver.omp.json' | Invoke-Expression
+oh-my-posh init pwsh --config 'C:\Users\$($env:USERNAME)\AppData\Local\Programs\oh-my-posh\themes\craver.omp.json' | Invoke-Expression
 Import-Module -Name Terminal-Icons
 "@
 
-Write-Host "`n✅    Escreve o conteúdo no arquivo do perfil" -ForegroundColor Green
+Write-Host "`n✅    Escrevendo o conteúdo no arquivo do perfil" -ForegroundColor Green
 Set-Content -Path $PROFILE -Value $conteudo
 
 Write-Host "`n✅ Ambiente de desenvolvimento configurado com sucesso!" -ForegroundColor Green
