@@ -43,8 +43,8 @@ foreach ($pkg in $packages) {
 }
 
 # Recarregar o perfil para garantir que o .NET esteja disponível no PATH
-Write-Host "`n🔄 Recarregando perfil do PowerShell após instalação de SDKs..." -ForegroundColor Cyan
 if (Test-Path $PROFILE) {
+    Write-Host "`n🔄 Recarregando perfil do PowerShell após instalação de SDKs..." -ForegroundColor Cyan
     try {
         . $PROFILE
     } catch {
@@ -54,6 +54,7 @@ if (Test-Path $PROFILE) {
     Write-Host "ℹ️ Criando arquivo de perfil do PowerShell vazio..." -ForegroundColor Yellow
     New-Item -ItemType File -Path $PROFILE -Force | Out-Null
 }
+
 
 # Ferramentas .NET globais
 $packagesDotNet = @(
