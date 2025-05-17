@@ -103,13 +103,30 @@ do
     fi
 done
 
+echo -e "\n✅ Instalando o GitHub CLI"
+sudo apt-add-repository https://cli.github.com/packages
+sudo apt install gh
+
 echo -e "\n✅ Removendo sources temporarios!"
 
-sudo rm /etc/apt/sources.list.d/archive_uri-https_cli_github_com_packages-noble.list
-sudo rm /etc/apt/sources.list.d/docker.list
-sudo rm /etc/apt/sources.list.d/github-cli.list
+declare -a temp_sources=(
+    "/etc/apt/sources.list.d/archive_uri-https_cli_github_com_packages-noble.list"
+    "/etc/apt/sources.list.d/docker.list"
+    "/etc/apt/sources.list.d/github-cli.list"
+    
+)
 
-
+for SOURCE_FILE in "${temp_sources[@]}"; do
+    if [ -f "$SOURCE_FILE" ]; then
+        if sudo rm "$SOURCE_FILE"; then
+            echo "🗑️  Source removido com sucesso: $SOURCE_FILE"
+        else
+            echo "❌ Erro ao remover: $SOURCE_FILE"
+        fi
+    else
+        echo "ℹ️  Source não encontrado: $SOURCE_FILE"
+    fi
+done
 
 echo -e "\n✅ Ambiente Linux configurado com sucesso!"
 
