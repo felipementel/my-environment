@@ -14,7 +14,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; $webClient = New-Object System
 
 # Linux
 ````
-/bin/bash -c "$(curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/felipementel/my-environment/main/setup-env.sh)"
+/bin/bash -c "$(curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/felipementel/my-environment/main/setup-linux.sh)"
 ````
 + Faça um café.
 
@@ -151,7 +151,7 @@ eval "$(oh-my-posh init bash --config $HOME/AppData/Local/Programs/oh-my-posh/th
 ````node
 npm -g i typescript ts-node postman newman-parallel spectral
 ````
-List global installed packages: 
+List global installed packages:
 ````node
 npm list -g --depth 0
 ````
