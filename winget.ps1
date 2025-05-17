@@ -84,7 +84,7 @@ Write-Host "`n📚 Atualizando ajuda do PowerShell..." -ForegroundColor Cyan
 Update-Help -Force -ErrorAction SilentlyContinue
 
 # Configuração global do Git
-Write-Host "`n🔧 Configurando Git... (Faça a configuracao do .gitignore manual depois)" -ForegroundColor Cyan
+Write-Host "`n🔧 Configurando Git... (Faça a configuracao do .gitconfig)" -ForegroundColor Cyan
 git config --global init.defaultBranch main
 git config --global user.name $nome
 git config --global user.email $email
