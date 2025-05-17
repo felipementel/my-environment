@@ -20,8 +20,6 @@ git config --global init.defaultBranch main
 git config --global user.name "$nome"
 git config --global user.email "$email"
 
-
-
 set -e  # Para abortar se algum comando falhar
 
 echo -e "\n🔧 Atualizando lista de pacotes..."
