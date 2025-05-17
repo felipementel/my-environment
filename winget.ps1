@@ -113,7 +113,7 @@ New-Item -Path $PROFILE -Type File -Force
 
 Write-Host "`n✅    Criando conteúdo para o arquivo do perfil" -ForegroundColor Green
 $conteudo = @"
-oh-my-posh init pwsh --config 'C:\Users\($env:USERNAME)\AppData\Local\Programs\oh-my-posh\themes\craver.omp.json' | Invoke-Expression
+oh-my-posh init pwsh --config 'C:\Users\$env:USERNAME\AppData\Local\Programs\oh-my-posh\themes\craver.omp.json' | Invoke-Expression
 Import-Module -Name Terminal-Icons
 "@
 
