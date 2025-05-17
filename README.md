@@ -14,7 +14,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; $webClient = New-Object System
 
 # Linux
 ````
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/felipementel/seurepo/main/setup-env.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/felipementel/my-environment/main/setup-env.sh)"
 ````
 + Faça um café.
 
