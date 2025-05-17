@@ -67,7 +67,7 @@ sudo chmod a+x /usr/local/bin/yq
 echo -e "\n📦 Baixando e instalando Docker"
 sudo curl -fsSL https://get.docker.com -o install-docker.sh
 sudo sh install-docker.sh
-sudo usermod -aG docker $(whoami)
+sudo usermod -aG docker $(whoami) # $USER
 #newgrp docker
 
 echo -e "\n📦 Testando o Docker"
@@ -82,7 +82,7 @@ echo "🧾 Garantindo que ~/.bashrc existe..."
 touch ~/.bashrc
 
 # Caminho do tema (ajuste se necessário)
-THEME_PATH="/mnt/c/users/$(whoami)/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json"
+THEME_PATH="/mnt/c/users/$whoami/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json"
 
 # Linha de inicialização
 INIT_LINE="eval \"\$(oh-my-posh init bash --config $THEME_PATH)\""
