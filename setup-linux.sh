@@ -105,6 +105,7 @@ if ! grep -Fxq "$INIT_LINE" ~/.bashrc; then
 else
     echo -e "\nℹ️${YELLOW} Configuração do Oh My Posh já existe no ~/.bashrc ${NC}"
     export POSH_THEME=$"/mnt/c/Users/$winUser/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json"
+    echo -e "\nℹ️${GREEN}      Configuração do Oh My Posh feita com sucesso! ${NC}"
 fi
 
 echo -e "\n${GREEN}🔧 Instalando ferramentas .NET globais...${NC}"
