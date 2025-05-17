@@ -175,4 +175,5 @@ done
 
 echo -e "\n${GREEN}✅ Ambiente Linux configurado com sucesso! ${NC}"
 
+export POSH_THEME=$THEME_PATH
 exec bash
