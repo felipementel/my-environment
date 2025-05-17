@@ -75,8 +75,6 @@ else
     echo "✅      Docker instalado com sucesso."
 fi
 
-
-
 echo -e "${GREEN}\n📦 Testando o Docker"
 sg docker -c "docker run hello-world"
 
@@ -104,7 +102,6 @@ if ! grep -Fxq "$INIT_LINE" ~/.bashrc; then
     echo "$INIT_LINE" >> ~/.bashrc
 else
     echo "ℹ️ Configuração do Oh My Posh já existe no ~/.bashrc"
-
     export POSH_THEME=$"/mnt/c/Users/$winUser/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json"
 fi
 
@@ -141,8 +138,7 @@ echo -e "${GREEN|}\n✅ Removendo sources temporarios!"
 declare -a temp_sources=(
     "/etc/apt/sources.list.d/archive_uri-https_cli_github_com_packages-noble.list"
     "/etc/apt/sources.list.d/docker.list"
-    "/etc/apt/sources.list.d/github-cli.list"
-    
+    "/etc/apt/sources.list.d/github-cli.list"    
 )
 
 for SOURCE_FILE in "${temp_sources[@]}"; do
