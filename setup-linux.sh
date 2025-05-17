@@ -105,24 +105,32 @@ sudo chmod +x /usr/local/bin/oh-my-posh
 echo -e "🧾 Garantindo que ~/.bashrc existe...${NC}"
 touch ~/.bashrc
 
+
 winUser=$(cmd.exe /c "echo %USERNAME%" 2>/dev/null | tr -d '\r')
-# Caminho do tema (ajuste se necessário)
 
-THEME_PATH="/mnt/c/users/$winUser/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json"
-
-# Linha de inicialização
-INIT_LINE="eval \"\$(oh-my-posh init bash --config $THEME_PATH)\""
-
-# Adiciona ao .bashrc se ainda não existir
-if ! grep -Fxq "$INIT_LINE" ~/.bashrc; then
-    echo -e "\n🧩 ${GREEN} Adicionando configuração do Oh My Posh ao ~/.bashrc ${NC}"
-    echo "" >> ~/.bashrc
-    echo "# Oh My Posh initialization" >> ~/.bashrc
-    echo "$INIT_LINE" >> ~/.bashrc
+if [ -z "$winUser" ]; then
+    echo -e "${RED}❌ Não foi possível obter o nome de usuário do Windows.${NC}"
 else
-    echo -e "\nℹ️${YELLOW} Configuração do Oh My Posh já existe no ~/.bashrc ${NC}"
+    echo -e "${GREEN}🧑 Usuário do Windows detectado: $winUser${NC}"
+
+    THEME_PATH="/mnt/c/Users/$winUser/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json"
+
+    INIT_LINE="eval \"\$(oh-my-posh init bash --config $THEME_PATH)\""
+
+    if ! grep -Fxq "$INIT_LINE" ~/.bashrc; then
+        echo -e "\n🧩 ${GREEN} Adicionando configuração do Oh My Posh ao ~/.bashrc ${NC}"
+        {
+            echo ""
+            echo "# Oh My Posh initialization"
+            echo "$INIT_LINE"
+        } >> ~/.bashrc
+    else
+        echo -e "\nℹ️${YELLOW} Configuração do Oh My Posh já existe no ~/.bashrc ${NC}"
+    fi
+
+    # Aplica imediatamente se o script for interativo
     export POSH_THEME=$THEME_PATH
-    echo -e "\nℹ️${GREEN}      Configuração do Oh My Posh feita com sucesso! ${NC}"
+    eval "$(oh-my-posh init bash --config $THEME_PATH)"
 fi
 
 echo -e "\n${GREEN}🔧 Instalando ferramentas .NET globais...${NC}"
@@ -175,5 +183,7 @@ done
 
 echo -e "\n${GREEN}✅ Ambiente Linux configurado com sucesso! ${NC}"
 
-export POSH_THEME=$THEME_PATH
-exec bash
+echo -e "\n${CYAN}🔁 Recarregando ~/.bashrc para aplicar as configurações do Oh My Posh...${NC}"
+source ~/.bashrc
+
+
