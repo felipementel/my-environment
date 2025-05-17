@@ -135,7 +135,7 @@ echo -e "\n${GREEN}✅ Instalando o GitHub CLI ${NC}"
 sudo apt-add-repository -y https://cli.github.com/packages
 sudo apt install gh
 
-echo -e "\n${GREEN}✅ Removendo sources temporarios!"
+echo -e "\n${GREEN}✅ Removendo sources temporarios!${NC}"
 
 declare -a temp_sources=(
     "/etc/apt/sources.list.d/archive_uri-https_cli_github_com_packages-noble.list"
@@ -146,12 +146,12 @@ declare -a temp_sources=(
 for SOURCE_FILE in "${temp_sources[@]}"; do
     if [ -f "$SOURCE_FILE" ]; then
         if sudo rm "$SOURCE_FILE"; then
-            echo "🗑️  Source removido com sucesso: $SOURCE_FILE"
+            echo -e "\n${YELLOW}🗑️ Source removido com sucesso: $SOURCE_FILE ${NC}"
         else
-            echo "❌ Erro ao remover: $SOURCE_FILE"
+            echo -e "\n${RED}❌ Erro ao remover: $SOURCE_FILE ${NC}"
         fi
     else
-        echo "ℹ️  Source não encontrado: $SOURCE_FILE"
+        echo -e "\n${YELLOW}ℹ️ Source não encontrado: $SOURCE_FILE ${NC}"
     fi
 done
 
