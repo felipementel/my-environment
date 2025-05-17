@@ -81,8 +81,10 @@ sudo chmod +x /usr/local/bin/oh-my-posh
 echo "🧾 Garantindo que ~/.bashrc existe..."
 touch ~/.bashrc
 
+winUser=$(cmd.exe /c "echo %USERNAME%" 2>/dev/null | tr -d '\r')
 # Caminho do tema (ajuste se necessário)
-THEME_PATH="/mnt/c/users/$USER/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json"
+
+THEME_PATH="/mnt/c/users/$winUser/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json"
 
 # Linha de inicialização
 INIT_LINE="eval \"\$(oh-my-posh init bash --config $THEME_PATH)\""
