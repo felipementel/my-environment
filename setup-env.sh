@@ -50,10 +50,10 @@ echo -e "\n📦 Baixando e instalando Docker"
 sudo curl -fsSL https://get.docker.com -o install-docker.sh
 sudo sh install-docker.sh
 sudo usermod -aG docker $(whoami)
-newgrp docker
+#newgrp docker
 
 echo -e "\n📦 Testando o Docker"
-docker container run hello-world
+sg docker -c "docker run hello-world"
 
 echo "📥 Baixando Oh My Posh..."
 sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
@@ -102,6 +102,14 @@ do
         dotnet tool install --global $tool
     fi
 done
+
+echo -e "\n✅ Removendo sources temporarios!"
+
+sudo rm /etc/apt/sources.list.d/archive_uri-https_cli_github_com_packages-noble.list
+sudo rm /etc/apt/sources.list.d/docker.list
+sudo rm /etc/apt/sources.list.d/github-cli.list
+
+
 
 echo -e "\n✅ Ambiente Linux configurado com sucesso!"
 
