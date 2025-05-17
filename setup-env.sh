@@ -10,13 +10,13 @@ echo -e "\n🔧 Atualizando lista de pacotes..."
 sudo apt update -y && sudo apt upgrade -y
 
 declare -a apt_tools=(
-    "mc",
-    "htop",
-    "jq",
-    "git",
-    "curl",
-    "wget",
-    "apt-transport-https",
+    "mc"
+    "htop"
+    "jq"
+    "git"
+    "curl"
+    "wget"
+    "apt-transport-https"
     "software-properties-common"
 )
 
