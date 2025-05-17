@@ -4,6 +4,24 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 
+echo -e "${CYAN}Informações para configuração da conta Git${NC}"
+
+# Solicita nome e e-mail
+read -rp "Digite seu nome: " nome
+read -rp "Digite seu e-mail: " email
+
+# Converte o e-mail para minúsculas
+email=$(echo "$email" | tr '[:upper:]' '[:lower:]')
+
+echo -e "\n🔧 ${CYAN}Configurando Git... (Faça a configuração do .gitconfig manual depois)${NC}"
+
+# Configurações globais do Git
+git config --global init.defaultBranch main
+git config --global user.name "$nome"
+git config --global user.email "$email"
+
+
+
 set -e  # Para abortar se algum comando falhar
 
 echo -e "\n🔧 Atualizando lista de pacotes..."
