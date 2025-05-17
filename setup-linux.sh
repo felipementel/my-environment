@@ -48,23 +48,23 @@ do
     fi
 done
 
-echo -e "${GREEN}\n📦 Instalando Azure CLI ${NC}"
+echo -e "\n${GREEN}📦 Instalando Azure CLI ${NC}"
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
-echo -e "${GREEN}\n📦 Instalando .NET ${NC}"
+echo -e "\n${GREEN}📦 Instalando .NET ${NC}"
 sudo curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh
 chmod +x ./dotnet-install.sh
 ./dotnet-install.sh --channel 9.0
 
-echo -e "${GREEN}\n📦 Configurando as variáveis de ambiente do .NET ${NC}"
+echo -e "\n${GREEN}📦 Configurando as variáveis de ambiente do .NET ${NC}"
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
-echo -e "${GREEN}\n📦 Baixando e instalando yq ${NC}"
+echo -e "\n${GREEN}📦 Baixando e instalando yq ${NC}"
 sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
 sudo chmod a+x /usr/local/bin/yq
 
-echo -e "${YELLOW}\n🐳 Verificando se o Docker já está instalado... ${NC}"
+echo -e "\n${YELLOW}🐳 Verificando se o Docker já está instalado... ${NC}"
 
 if command -v docker &> /dev/null; then
     echo "✅ Docker já está instalado. Pulando a instalação."
@@ -77,10 +77,10 @@ else
     echo -e "\n${GREEN}✅      Docker instalado com sucesso.${NC}"
 fi
 
-echo -e "${YELLOW}\n📦 Testando o Docker ${NC}"
+echo -e "\n${YELLOW}📦 Testando o Docker ${NC}"
 sg docker -c "docker run hello-world"
 
-echo -e "📥${GREEN}\n Baixando Oh My Posh...${NC}"
+echo -e "\n📥${GREEN}\n Baixando Oh My Posh...${NC}"
 sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
 sudo chmod +x /usr/local/bin/oh-my-posh
 
