@@ -67,7 +67,7 @@ sudo chmod a+x /usr/local/bin/yq
 echo -e "\n${YELLOW}🐳 Verificando se o Docker já está instalado... ${NC}"
 
 if command -v docker &> /dev/null; then
-    echo "✅ Docker já está instalado. Pulando a instalação."
+    echo -e "\n${YELLOW}✅ Docker já está instalado. Pulando a instalação."
 else
     echo -e "${GREEN}📦 Instalando Docker... ${NC}"
     sudo curl -fsSL https://get.docker.com -o install-docker.sh
@@ -104,6 +104,7 @@ if ! grep -Fxq "$INIT_LINE" ~/.bashrc; then
     echo "$INIT_LINE" >> ~/.bashrc
 else
     echo -e "\nℹ️${YELLOW} Configuração do Oh My Posh já existe no ~/.bashrc ${NC}"
+    winUser=$(cmd.exe /c "echo %USERNAME%" 2>/dev/null | tr -d '\r')
     export POSH_THEME=$"/mnt/c/Users/$winUser/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json"
     echo -e "\nℹ️${GREEN}      Configuração do Oh My Posh feita com sucesso! ${NC}"
 fi
