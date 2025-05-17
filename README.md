@@ -11,6 +11,11 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 ````
 Set-ExecutionPolicy Bypass -Scope Process -Force; $webClient = New-Object System.Net.WebClient; $webClient.CachePolicy = New-Object System.Net.Cache.RequestCachePolicy([System.Net.Cache.RequestCacheLevel]::NoCacheNoStore); iex ($webClient.DownloadString("https://raw.githubusercontent.com/felipementel/my-environment/main/winget.ps1"))
 ````
+
+# Linux
+````
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/felipementel/seurepo/main/setup-env.sh)"
+````
 + Faça um café.
 
 PS: Lembrar de trocar o path do PowerShell Core no Windows Terminal para C:\Program Files\PowerShell\7\pwsh.exe
@@ -18,46 +23,6 @@ PS: Lembrar de trocar o path do PowerShell Core no Windows Terminal para C:\Prog
 # O que instalar e configurar no Windows? 🪟
 ## 2. Habilitar Windows + V :notes:
 
-## 3. Configurar no git :cop:
-
-````git
-git config --global init.defaultBranch main
-
-git config --global user.name 'Felipe Augusto'
-git config user.email 'EMAIL' (por pasta de projeto)
-````
-## Windows / PowerShell Core
-
-### Install Terminal Icons
-
-````
-Install-Module -Name Terminal-Icons -Repository PSGallery
-````
-### Install OhMyPosh on Windows
-````
-oh-my-posh font install
-````
-  OU instale direto a fonte
-````
-oh-my-posh font install meslo
-````
-````     
-notepad $PROFILE
-````
-Se não conseguir criar o arquivo, execute o comando abaixo primeiro e depois execute o comando acima
-````   
-New-Item -Path $PROFILE -Type File -Force
-````
-### Feito a criação do arquivo, adicione os itens abaixo no arquivo
-````
-oh-my-posh init pwsh --config 'C:\Users\felipe.augusto\AppData\Local\Programs\oh-my-posh\themes\craver.omp.json' | Invoke-Expression
-Import-Module -Name Terminal-Icons
-````
-
-### Comando para recarregar:
-````
-. $PROFILE
-````
 
 > [!IMPORTANT]
 > Configurar Fonte no terminal de forma manual !!!
