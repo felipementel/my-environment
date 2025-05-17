@@ -48,17 +48,34 @@ do
     fi
 done
 
-echo -e "\n${GREEN}📦 Instalando Azure CLI ${NC}"
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+echo -e "\n📦 Verificando se o Azure CLI já está instalado..."
 
-echo -e "\n${GREEN}📦 Instalando .NET ${NC}"
-sudo curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh
-chmod +x ./dotnet-install.sh
-./dotnet-install.sh --channel 9.0
+if command -v az &> /dev/null; then
+    echo "✅ Azure CLI já está instalado. Pulando a instalação."
+else
+    echo -e "\n📦 Instalando Azure CLI..."
+    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+    echo "✅ Azure CLI instalado com sucesso."
+fi
 
-echo -e "\n${GREEN}📦 Configurando as variáveis de ambiente do .NET ${NC}"
+
+echo -e "\n📦 Verificando se o .NET já está instalado..."
+
+if command -v dotnet &> /dev/null; then
+    echo "✅ .NET já está instalado. Pulando a instalação."
+else
+    echo -e "\n📦 Instalando .NET..."
+    sudo curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh
+    chmod +x ./dotnet-install.sh
+    ./dotnet-install.sh --channel 9.0
+    echo "✅ .NET instalado com sucesso."
+fi
+
+# ✅ Configura as variáveis de ambiente, mesmo que o .NET já esteja instalado
+echo -e "\n📦 Configurando as variáveis de ambiente do .NET"
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
 
 echo -e "\n${GREEN}📦 Baixando e instalando yq ${NC}"
 sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
