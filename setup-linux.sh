@@ -76,10 +76,14 @@ echo -e "\n📦 Configurando as variáveis de ambiente do .NET"
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
+if ! command -v yq &> /dev/null; then
+    echo -e "\n${GREEN}📦 Baixando e instalando yq ${NC}"
+    sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+    sudo chmod a+x /usr/local/bin/yq
+else
+    echo "✅ yq já está instalado: $(yq --version)"
+fi
 
-echo -e "\n${GREEN}📦 Baixando e instalando yq ${NC}"
-sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
-sudo chmod a+x /usr/local/bin/yq
 
 echo -e "\n${YELLOW}🐳 Verificando se o Docker já está instalado... ${NC}"
 
