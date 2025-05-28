@@ -18,6 +18,27 @@ read -rp "Digite seu e-mail: " email
 # Converte o e-mail para minúsculas
 email=$(echo "$email" | tr '[:upper:]' '[:lower:]')
 
+### Get Windowns user
+# Detectar usuário do Windows
+winUser=$(cmd.exe /c "echo %USERNAME%" 2>/dev/null | tr -d '\r')
+
+# Se não detectou, solicitar manualmente
+if [ -z "$winUser" ]; then
+    echo -e "${RED}❌ Não foi possível obter o nome de usuário do Windows automaticamente.${NC}"
+    read -p "🔤 Digite o nome do usuário do Windows manualmente: " winUser
+else
+    echo -e "${GREEN}🧑 Usuário do Windows detectado: $winUser${NC}"
+    read -p "❓ Deseja usar esse nome de usuário? (S/n): " resposta
+    resposta=${resposta,,} # minúsculas
+
+    if [[ "$resposta" == "n" || "$resposta" == "nao" || "$resposta" == "não" ]]; then
+        read -p "🔤 Digite o nome do usuário do Windows manualmente: " winUser
+    fi
+fi
+
+# Confirmar valor final
+echo -e "${GREEN}✅ Usuário do Windows final: $winUser ${NC}"
+
 ### Update and upgrade
 
 echo -e "\n${GREEN}🔧 Atualizando lista de pacotes...${NC}"
@@ -124,9 +145,10 @@ done
 
 ### Docker 
 
-echo -e "\n${BLUE}🐳 Verificando se o Docker já está instalado... ${NC}"
-
 linuxUser=$(whoami)
+
+echo -e "\n${BLUE}🐳 Verificando se o Docker já está instalado... ${NC}"
+echo -e "\n${YELLOW} Estaremos utilizando o user $linuxUser para os acessos e permissões nesse step ${NC}"
 
 if command -v docker &> /dev/null; then
     echo -e "\n${YELLOW}✅ Docker já está instalado. Pulando a instalação. ${NC}"
@@ -144,41 +166,35 @@ sg docker -c "docker run hello-world"
 
 ### Oh My Posh
 
-echo -e "\n📥${BLUE}\n Baixando Oh My Posh...${NC}"
+echo -e "\n📥${BLUE} Baixando Oh My Posh...${NC}"
 
 sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
 sudo chmod +x /usr/local/bin/oh-my-posh
 
 # Garantir que o .bashrc exista
-echo -e "🧾 Garantindo que ~/.bashrc existe...${NC}"
+echo -e "🧾 ${YELLOW} Garantindo que ~/.bashrc existe...${NC}"
 touch ~/.bashrc
+echo -e "🧾 ${YELLOW} Estamos utilizando o usuário: $winUser ${NC}"
 
-winUser=$(cmd.exe /c "echo %USERNAME%" 2>/dev/null | tr -d '\r')
+THEME_PATH="/mnt/c/Users/$winUser/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json"
 
-if [ -z "$winUser" ]; then
-    echo -e "${RED}❌ Não foi possível obter o nome de usuário do Windows.${NC}"
+INIT_LINE="eval \"\$(oh-my-posh init bash --config $THEME_PATH)\""
+
+if ! grep -Fxq "$INIT_LINE" ~/.bashrc; then
+    echo -e "\n🧩 ${GREEN} Adicionando configuração do Oh My Posh ao ~/.bashrc ${NC}"
+    {
+        echo ""
+        echo "# Oh My Posh initialization"
+        echo "$INIT_LINE"
+    } >> ~/.bashrc
 else
-    echo -e "${GREEN}🧑 Usuário do Windows detectado: $winUser${NC}"
-
-    THEME_PATH="/mnt/c/Users/$winUser/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json"
-
-    INIT_LINE="eval \"\$(oh-my-posh init bash --config $THEME_PATH)\""
-
-    if ! grep -Fxq "$INIT_LINE" ~/.bashrc; then
-        echo -e "\n🧩 ${GREEN} Adicionando configuração do Oh My Posh ao ~/.bashrc ${NC}"
-        {
-            echo ""
-            echo "# Oh My Posh initialization"
-            echo "$INIT_LINE"
-        } >> ~/.bashrc
-    else
-        echo -e "\nℹ️${YELLOW} Configuração do Oh My Posh já existe no ~/.bashrc ${NC}"
-    fi
-
-    # Aplica imediatamente se o script for interativo
-    export POSH_THEME=$THEME_PATH
-    eval "$(oh-my-posh init bash --config $THEME_PATH)"
+    echo -e "\nℹ️${YELLOW} Configuração do Oh My Posh já existe no ~/.bashrc ${NC}"
 fi
+
+# Aplica imediatamente se o script for interativo
+export POSH_THEME=$THEME_PATH
+eval "$(oh-my-posh init bash --config $THEME_PATH)"
+
 
 ### GH Cli
 
