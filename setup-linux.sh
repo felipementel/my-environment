@@ -1,31 +1,29 @@
 #!/bin/bash
 
+set -e  # Para abortar se algum comando falhar
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color (reset)
 
+### Get info to configure Git account
+
 echo -e "${GREEN}Informações para configuração da conta Git ${NC}"
 
-# Solicita nome e e-mail
+# Get Name and E-mail for config Git Account
 read -rp "Digite seu nome: " nome
 read -rp "Digite seu e-mail: " email
 
 # Converte o e-mail para minúsculas
 email=$(echo "$email" | tr '[:upper:]' '[:lower:]')
 
-echo -e "\n${YELLOW}🔧 Configurando Git... (Faça a configuração do .gitconfig manual depois) ${NC}"
-
-# Configurações globais do Git
-git config --global init.defaultBranch main
-git config --global user.name "$nome"
-git config --global user.email "$email"
-
-set -e  # Para abortar se algum comando falhar
+### Update and upgrade
 
 echo -e "\n${GREEN}🔧 Atualizando lista de pacotes...${NC}"
 sudo apt update -y && sudo apt upgrade -y
+
+### Install main packages
 
 declare -a apt_tools=(
     "mc"
@@ -48,6 +46,15 @@ do
     fi
 done
 
+### Configure Git Account
+echo -e "\n${YELLOW}🔧 Configurando Git... (Faça a configuração do .gitconfig manual depois) ${NC}"
+
+# Configurações globais do Git
+git config --global init.defaultBranch main
+git config --global user.name "$nome"
+git config --global user.email "$email"
+
+######################
 echo -e "\n📦 Verificando se o Azure CLI já está instalado..."
 
 if command -v az &> /dev/null; then
@@ -58,6 +65,7 @@ else
     echo "✅ Azure CLI instalado com sucesso."
 fi
 
+### .NET
 
 echo -e "\n📦 Verificando se o .NET já está instalado..."
 
@@ -76,6 +84,8 @@ echo -e "\n📦 Configurando as variáveis de ambiente do .NET"
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
+### yq
+
 if ! command -v yq &> /dev/null; then
     echo -e "\n${GREEN}📦 Baixando e instalando yq ${NC}"
     sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
@@ -84,8 +94,37 @@ else
     echo "✅ yq já está instalado: $(yq --version)"
 fi
 
+### .NET Tools 
+
+echo -e "\n${GREEN}🔧 Instalando ferramentas .NET globais...${NC}"
+
+declare -a dotnet_tools=(
+    "dotnet-reportgenerator-globaltool"
+    "dotnet-aspnet-codegenerator"
+    "dotnet-coverage"
+    "dotnet-sonarscanner"
+    "dotnet-trace"
+    "dotnet-counters"
+    "dotnet-monitor"
+    "dotnet-ef"
+)
+
+for tool in "${dotnet_tools[@]}"
+do
+    if dotnet tool list -g | grep -q "$tool"; then
+        echo -e "\n${YELLOW}🔄 Atualizando $tool..."
+        dotnet tool update --global $tool
+    else
+        echo -e "\n${GREEN}📦 Instalando $tool..."
+        dotnet tool install --global $tool
+    fi
+done
+
+### Docker 
 
 echo -e "\n${YELLOW}🐳 Verificando se o Docker já está instalado... ${NC}"
+
+linuxUser=$(whoami)
 
 if command -v docker &> /dev/null; then
     echo -e "\n${YELLOW}✅ Docker já está instalado. Pulando a instalação."
@@ -93,13 +132,15 @@ else
     echo -e "${GREEN}📦 Instalando Docker... ${NC}"
     sudo curl -fsSL https://get.docker.com -o install-docker.sh
     sudo sh install-docker.sh
-    sudo usermod -aG docker "$(whoami)" # $USER
     #newgrp docker
-    echo -e "\n${GREEN}✅      Docker instalado com sucesso.${NC}"
+    sudo usermod -aG docker $linuxUser # $USER    
+    echo -e "\n${GREEN}✅      Docker instalado com sucesso e acesso concedido ao user $linuxUser.${NC}"
 fi
 
 echo -e "\n${YELLOW}📦 Testando o Docker ${NC}"
 sg docker -c "docker run hello-world"
+
+### Oh My Posh
 
 echo -e "\n📥${GREEN}\n Baixando Oh My Posh...${NC}"
 sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
@@ -108,7 +149,6 @@ sudo chmod +x /usr/local/bin/oh-my-posh
 # Garantir que o .bashrc exista
 echo -e "🧾 Garantindo que ~/.bashrc existe...${NC}"
 touch ~/.bashrc
-
 
 winUser=$(cmd.exe /c "echo %USERNAME%" 2>/dev/null | tr -d '\r')
 
@@ -137,29 +177,7 @@ else
     eval "$(oh-my-posh init bash --config $THEME_PATH)"
 fi
 
-echo -e "\n${GREEN}🔧 Instalando ferramentas .NET globais...${NC}"
-
-declare -a dotnet_tools=(
-    "dotnet-reportgenerator-globaltool"
-    "dotnet-aspnet-codegenerator"
-    "dotnet-coverage"
-    "dotnet-sonarscanner"
-    "dotnet-trace"
-    "dotnet-counters"
-    "dotnet-monitor"
-    "dotnet-ef"
-)
-
-for tool in "${dotnet_tools[@]}"
-do
-    if dotnet tool list -g | grep -q "$tool"; then
-        echo -e "\n${YELLOW}🔄 Atualizando $tool..."
-        dotnet tool update --global $tool
-    else
-        echo -e "\n${GREEN}📦 Instalando $tool..."
-        dotnet tool install --global $tool
-    fi
-done
+### GH Cli
 
 echo -e "\n${GREEN}✅ Instalando o GitHub CLI ${NC}"
 sudo apt-add-repository -y https://cli.github.com/packages
@@ -189,5 +207,3 @@ echo -e "\n${GREEN}✅ Ambiente Linux configurado com sucesso! ${NC}"
 
 echo -e "\n${CYAN}🔁 Recarregando ~/.bashrc para aplicar as configurações do Oh My Posh...${NC}"
 source ~/.bashrc
-
-
