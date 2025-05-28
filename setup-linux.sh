@@ -8,6 +8,11 @@ BLUE='\033[0;34m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color (reset)
 
+if ! grep -qi microsoft /proc/version; then
+    echo -e "${RED}❌ Este script deve ser executado dentro do WSL.${NC}"
+    exit 1
+fi
+
 ### Get info to configure Git account
 
 echo -e "${GREEN}Informações para configuração da conta Git ${NC}"
