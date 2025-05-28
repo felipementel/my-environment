@@ -24,7 +24,7 @@ echo -e "\n${GREEN}🔧 Atualizando lista de pacotes...${NC}"
 sudo apt update -y && sudo apt upgrade -y
 
 ### Install main packages
-
+echo -e "\n${BLUE}📦 Verificando os pacotes importantes para o ambiente ...${NC}"
 declare -a apt_tools=(
     "mc"
     "htop"
@@ -39,64 +39,66 @@ declare -a apt_tools=(
 for tool in "${apt_tools[@]}"
 do
     if dpkg -s "$tool" &> /dev/null; then
-        echo "✅ $tool já instalado."
+        echo -e "\n${YELLOW}✅ $tool já instalado."
     else
-        echo "📦 Instalando $tool via apt..."
+        echo -e "\n${GREEN}📦 Instalando $tool via apt..."
         sudo apt install -y "$tool"
     fi
 done
 
 ### Configure Git Account
-echo -e "\n${YELLOW}🔧 Configurando Git... (Faça a configuração do .gitconfig manual depois) ${NC}"
+echo -e "\n${BLUE}🔧 Configurando Git... (Faça a configuração do .gitconfig manual depois) ${NC}"
 
 # Configurações globais do Git
 git config --global init.defaultBranch main
 git config --global user.name "$nome"
 git config --global user.email "$email"
 
-######################
-echo -e "\n📦 Verificando se o Azure CLI já está instalado..."
+echo -e "\n${GREEN}🔧 Git configurado com sucesso ${NC}"
+
+### Azure CLI
+echo -e "\n${BLUE}📦 Verificando se o Azure CLI já está instalado... ${NC}"
 
 if command -v az &> /dev/null; then
-    echo "✅ Azure CLI já está instalado. Pulando a instalação."
+    echo -e "\n${YELLOW}✅ Azure CLI já está instalado. Pulando a instalação."
 else
-    echo -e "\n📦 Instalando Azure CLI..."
+    echo -e "\n📦${GREEN}  Instalando Azure CLI... ${NC}"
     curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-    echo "✅ Azure CLI instalado com sucesso."
+    echo -e "\n${GREEN}✅ Azure CLI instalado com sucesso. ${NC}"
 fi
 
 ### .NET
 
-echo -e "\n📦 Verificando se o .NET já está instalado..."
+echo -e "\n${BLUE}📦 Verificando se o .NET já está instalado... ${NC}"
 
 if command -v dotnet &> /dev/null; then
     echo "✅ .NET já está instalado. Pulando a instalação."
 else
-    echo -e "\n📦 Instalando .NET..."
+    echo -e "\n📦 Instalando .NET... ${NC}"
     sudo curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh
     chmod +x ./dotnet-install.sh
     ./dotnet-install.sh --channel 9.0
-    echo "✅ .NET instalado com sucesso."
+    echo "✅ .NET instalado com sucesso. ${NC}"
 fi
 
 # ✅ Configura as variáveis de ambiente, mesmo que o .NET já esteja instalado
-echo -e "\n📦 Configurando as variáveis de ambiente do .NET"
+echo -e "\n📦 Configurando as variáveis de ambiente do .NET ${NC}"
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
 ### yq
+echo -e "\n${BLUE}📦 Verificando se o yq já está instalado... ${NC}"
 
 if ! command -v yq &> /dev/null; then
     echo -e "\n${GREEN}📦 Baixando e instalando yq ${NC}"
     sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
     sudo chmod a+x /usr/local/bin/yq
 else
-    echo "✅ yq já está instalado: $(yq --version)"
+    echo "✅ yq já está instalado: $(yq --version) ${NC}"
 fi
 
 ### .NET Tools 
-
-echo -e "\n${GREEN}🔧 Instalando ferramentas .NET globais...${NC}"
+echo -e "\n${BLUE}📦 Verificando se ferramentas .NET globais já estão instalado... ${NC}"
 
 declare -a dotnet_tools=(
     "dotnet-reportgenerator-globaltool"
@@ -112,22 +114,22 @@ declare -a dotnet_tools=(
 for tool in "${dotnet_tools[@]}"
 do
     if dotnet tool list -g | grep -q "$tool"; then
-        echo -e "\n${YELLOW}🔄 Atualizando $tool..."
+        echo -e "\n${YELLOW}🔄 Atualizando $tool... ${NC}"
         dotnet tool update --global $tool
     else
-        echo -e "\n${GREEN}📦 Instalando $tool..."
+        echo -e "\n${GREEN}📦 Instalando $tool... ${NC}"
         dotnet tool install --global $tool
     fi
 done
 
 ### Docker 
 
-echo -e "\n${YELLOW}🐳 Verificando se o Docker já está instalado... ${NC}"
+echo -e "\n${BLUE}🐳 Verificando se o Docker já está instalado... ${NC}"
 
 linuxUser=$(whoami)
 
 if command -v docker &> /dev/null; then
-    echo -e "\n${YELLOW}✅ Docker já está instalado. Pulando a instalação."
+    echo -e "\n${YELLOW}✅ Docker já está instalado. Pulando a instalação. ${NC}"
 else
     echo -e "${GREEN}📦 Instalando Docker... ${NC}"
     sudo curl -fsSL https://get.docker.com -o install-docker.sh
@@ -142,7 +144,8 @@ sg docker -c "docker run hello-world"
 
 ### Oh My Posh
 
-echo -e "\n📥${GREEN}\n Baixando Oh My Posh...${NC}"
+echo -e "\n📥${BLUE}\n Baixando Oh My Posh...${NC}"
+
 sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
 sudo chmod +x /usr/local/bin/oh-my-posh
 
@@ -179,11 +182,13 @@ fi
 
 ### GH Cli
 
-echo -e "\n${GREEN}✅ Instalando o GitHub CLI ${NC}"
+echo -e "\n${BLUE}✅ Instalando o GitHub CLI ${NC}"
 sudo apt-add-repository -y https://cli.github.com/packages
 sudo apt install gh
 
-echo -e "\n${GREEN}✅ Removendo sources temporarios!${NC}"
+### Clean remote sources
+
+echo -e "\n${BLUE}✅ Removendo sources temporarios!${NC}"
 
 declare -a temp_sources=(
     "/etc/apt/sources.list.d/archive_uri-https_cli_github_com_packages-noble.list"
