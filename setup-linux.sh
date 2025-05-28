@@ -165,6 +165,25 @@ fi
 echo -e "\n${YELLOW}📦 Testando o Docker ${NC}"
 sg docker -c "docker run hello-world"
 
+### Docker Compose Plugin
+
+echo -e "\n🐳 ${BLUE}Verificando o Docker Compose Plugin...${NC}"
+
+if docker compose version >/dev/null 2>&1; then
+    echo -e "✅ ${GREEN}Docker Compose Plugin já está instalado.${NC}"
+else
+    echo -e "📥 ${YELLOW}Docker Compose Plugin não encontrado. Instalando...${NC}"
+    sudo apt-get update -y
+    sudo apt-get install -y docker-compose-plugin
+
+    if docker compose version >/dev/null 2>&1; then
+        echo -e "✅ ${GREEN}Docker Compose Plugin instalado com sucesso!${NC}"
+    else
+        echo -e "❌ ${RED}Falha ao instalar o Docker Compose Plugin.${NC}"
+    fi
+fi
+
+
 ### Oh My Posh
 
 if command -v oh-my-posh >/dev/null 2>&1; then
