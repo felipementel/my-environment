@@ -170,16 +170,16 @@ sg docker -c "docker run hello-world"
 echo -e "\n🐳 ${BLUE}Verificando o Docker Compose Plugin...${NC}"
 
 if docker compose version >/dev/null 2>&1; then
-    echo -e "✅ ${GREEN}Docker Compose Plugin já está instalado.${NC}"
+    echo -e "\n✅ ${GREEN}Docker Compose Plugin já está instalado.${NC}"
 else
-    echo -e "📥 ${YELLOW}Docker Compose Plugin não encontrado. Instalando...${NC}"
+    echo -e "\n📥 ${YELLOW}Docker Compose Plugin não encontrado. Instalando...${NC}"
     sudo apt-get update -y
     sudo apt-get install -y docker-compose-plugin
 
     if docker compose version >/dev/null 2>&1; then
-        echo -e "✅ ${GREEN}Docker Compose Plugin instalado com sucesso!${NC}"
+        echo -e "\n✅ ${GREEN}Docker Compose Plugin instalado com sucesso!${NC}"
     else
-        echo -e "❌ ${RED}Falha ao instalar o Docker Compose Plugin.${NC}"
+        echo -e "\n❌ ${RED}Falha ao instalar o Docker Compose Plugin.${NC}"
     fi
 fi
 
