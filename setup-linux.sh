@@ -167,41 +167,56 @@ sg docker -c "docker run hello-world"
 
 ### Oh My Posh
 
-echo -e "\n📥${BLUE} Baixando Oh My Posh...${NC}"
-
-sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
-sudo chmod +x /usr/local/bin/oh-my-posh
+if command -v oh-my-posh >/dev/null 2>&1; then
+    echo -e "⚠️ ${YELLOW}Oh My Posh já está instalado.${NC}"
+else
+    echo -e "\n📥 ${BLUE}Baixando Oh My Posh...${NC}"
+    sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+    sudo chmod +x /usr/local/bin/oh-my-posh
+    echo -e "✅ ${GREEN}Oh My Posh instalado com sucesso.${NC}"
+fi
 
 # Garantir que o .bashrc exista
-echo -e "🧾 ${YELLOW} Garantindo que ~/.bashrc existe...${NC}"
+echo -e "🧾 ${YELLOW}Garantindo que ~/.bashrc existe...${NC}"
 touch ~/.bashrc
-echo -e "🧾 ${YELLOW} Estamos utilizando o usuário: $winUser ${NC}"
+
+echo -e "🧾 ${YELLOW}Estamos utilizando o usuário: $winUser${NC}"
 
 THEME_PATH="/mnt/c/Users/$winUser/AppData/Local/Programs/oh-my-posh/themes/craver.omp.json"
-
 INIT_LINE="eval \"\$(oh-my-posh init bash --config $THEME_PATH)\""
 
 if ! grep -Fxq "$INIT_LINE" ~/.bashrc; then
-    echo -e "\n🧩 ${GREEN} Adicionando configuração do Oh My Posh ao ~/.bashrc ${NC}"
+    echo -e "\n🧩 ${GREEN}Adicionando configuração do Oh My Posh ao ~/.bashrc${NC}"
     {
         echo ""
         echo "# Oh My Posh initialization"
         echo "$INIT_LINE"
     } >> ~/.bashrc
 else
-    echo -e "\nℹ️${YELLOW} Configuração do Oh My Posh já existe no ~/.bashrc ${NC}"
+    echo -e "\nℹ️ ${YELLOW}Configuração do Oh My Posh já existe no ~/.bashrc${NC}"
 fi
 
 # Aplica imediatamente se o script for interativo
-export POSH_THEME=$THEME_PATH
-eval "$(oh-my-posh init bash --config $THEME_PATH)"
+if [ -f "$THEME_PATH" ]; then
+    export POSH_THEME=$THEME_PATH
+    eval "$(oh-my-posh init bash --config $THEME_PATH)"
+    echo -e "✨ ${GREEN}Oh My Posh aplicado com o tema: $THEME_PATH${NC}"
+else
+    echo -e "❌ ${RED}Tema não encontrado em: $THEME_PATH${NC}"
+fi
 
 
 ### GH Cli
+echo -e "\n${BLUE}📦 Verificando se o GitHub CLI já esta instalado... ${NC}"
 
-echo -e "\n${BLUE}✅ Instalando o GitHub CLI ${NC}"
-sudo apt-add-repository -y https://cli.github.com/packages
-sudo apt install gh
+if command -v gh >/dev/null 2>&1; then
+    echo -e "${YELLOW}⚠️  GitHub CLI já está instalado.${NC}"
+else
+    echo -e "\n${GREEN}✅ Instalando o GitHub CLI...${NC}"
+    sudo apt-add-repository -y https://cli.github.com/packages
+    sudo apt install -y gh
+    echo -e "${GREEN}✅ GitHub CLI instalado com sucesso.${NC}"
+fi
 
 ### Clean remote sources
 
