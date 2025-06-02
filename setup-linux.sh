@@ -61,9 +61,9 @@ declare -a apt_tools=(
 for tool in "${apt_tools[@]}"
 do
     if dpkg -s "$tool" &> /dev/null; then
-        echo -e "\n${YELLOW}✅ $tool já instalado."
+        echo -e "\n${YELLOW}✅     $tool já instalado."
     else
-        echo -e "\n${GREEN}📦 Instalando $tool via apt..."
+        echo -e "\n${GREEN}📦     Instalando $tool via apt..."
         sudo apt install -y "$tool"
     fi
 done
@@ -84,9 +84,9 @@ echo -e "\n${BLUE}📦 Verificando se o Azure CLI já está instalado... ${NC}"
 if command -v az &> /dev/null; then
     echo -e "\n${YELLOW}✅ Azure CLI já está instalado. Pulando a instalação."
 else
-    echo -e "\n📦${GREEN}  Instalando Azure CLI... ${NC}"
+    echo -e "\n📦${GREEN} Instalando Azure CLI... ${NC}"
     curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-    echo -e "\n${GREEN}✅ Azure CLI instalado com sucesso. ${NC}"
+    echo -e "\n${GREEN}✅     Azure CLI instalado com sucesso. ${NC}"
 fi
 
 ### .NET
@@ -94,17 +94,17 @@ fi
 echo -e "\n${BLUE}📦 Verificando se o .NET já está instalado... ${NC}"
 
 if command -v dotnet &> /dev/null; then
-    echo "✅ .NET já está instalado. Pulando a instalação."
+    echo -e "\n🦘${YELLOW} .NET já está instalado. Pulando a instalação.${NC}"
 else
-    echo -e "\n📦 Instalando .NET... ${NC}"
+    echo -e "\n📦${YELLOW} Instalando .NET... ${NC}"
     sudo curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh
     chmod +x ./dotnet-install.sh
     ./dotnet-install.sh --channel 9.0
-    echo "✅ .NET instalado com sucesso. ${NC}"
+    echo -e "\n✅${GREEN}     .NET instalado com sucesso. ${NC}"
 fi
 
 # ✅ Configura as variáveis de ambiente, mesmo que o .NET já esteja instalado
-echo -e "\n📦 Configurando as variáveis de ambiente do .NET ${NC}"
+echo -e "\n📦${YELLOW} Configurando as variáveis de ambiente do .NET ${NC}"
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
@@ -112,11 +112,12 @@ export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 echo -e "\n${BLUE}📦 Verificando se o yq já está instalado... ${NC}"
 
 if ! command -v yq &> /dev/null; then
-    echo -e "\n${GREEN}📦 Baixando e instalando yq ${NC}"
+    echo -e "\n${YELLOW}📦 Baixando e instalando yq ${NC}"
     sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
     sudo chmod a+x /usr/local/bin/yq
+    echo -e "\n${GREEN}📦 yq instalado com sucesso ${NC}"
 else
-    echo "✅ yq já está instalado: $(yq --version) ${NC}"
+    echo -e "\n${YELLOW}📦 yq já está instalado: $(yq --version) ${NC}"
 fi
 
 ### .NET Tools 
@@ -159,7 +160,7 @@ else
     sudo sh install-docker.sh
     #newgrp docker
     sudo usermod -aG docker $linuxUser # $USER    
-    echo -e "\n${GREEN}✅      Docker instalado com sucesso e acesso concedido ao user $linuxUser.${NC}"
+    echo -e "\n${GREEN}✅     Docker instalado com sucesso e acesso concedido ao user $linuxUser.${NC}"
 fi
 
 echo -e "\n${YELLOW}📦 Testando o Docker ${NC}"
@@ -183,16 +184,33 @@ else
     fi
 fi
 
+### nvm
+
+echo -e "\n ${BLUE}Verificando o NVM...${NC}"
+
+if nvm >/dev/null 2>&1; then
+    echo -e "\n✅ ${GREEN}NVM já está instalado.${NC}"
+else
+    echo -e "\n📥 ${YELLOW}Docker Compose Plugin não encontrado. Instalando...${NC}"
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+    if nvm >/dev/null 2>&1; then
+        echo -e "\n✅ ${GREEN}NVM instalado com sucesso!${NC}"
+    else
+        echo -e "\n❌ ${RED}Falha ao instalar o NVM.${NC}"
+    fi
+fi
 
 ### Oh My Posh
+echo -e "\n ${BLUE}Verificando o Oh My Posh...${NC}"
 
 if command -v oh-my-posh >/dev/null 2>&1; then
-    echo -e "⚠️ ${YELLOW}Oh My Posh já está instalado.${NC}"
+    echo -e "\n⚠️ ${YELLOW}Oh My Posh já está instalado.${NC}"
 else
     echo -e "\n📥 ${BLUE}Baixando Oh My Posh...${NC}"
     sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
     sudo chmod +x /usr/local/bin/oh-my-posh
-    echo -e "✅ ${GREEN}Oh My Posh instalado com sucesso.${NC}"
+    echo -e "\n✅ ${GREEN}Oh My Posh instalado com sucesso.${NC}"
 fi
 
 # Garantir que o .bashrc exista
