@@ -41,7 +41,6 @@ foreach ($pkg in $packages) {
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 # $env:PATH += ";$env:USERPROFILE\AppData\Local\Microsoft\dotnet"
 
-
 # Recarregar o perfil para garantir que o .NET esteja disponível no PATH
 if (Test-Path $PROFILE) {
     Write-Host "`n🔄 Recarregando perfil do PowerShell após instalação de SDKs..." -ForegroundColor Cyan
@@ -124,5 +123,22 @@ Import-Module -Name Terminal-Icons
 
 Write-Host "`n✅    Escrevendo o conteúdo no arquivo do perfil" -ForegroundColor Green
 Set-Content -Path $PROFILE -Value $conteudo
+
+# WSL2
+$opcao = Read-Host "Deseja instalar o WSL2 com Ubuntu 24.04? (Y)es / (N)o"
+
+if ($opcao -match '^(Y|y)$') {
+    Write-Host "`nIniciando instalação do WSL2 e Ubuntu 24.04..." -ForegroundColor Green
+
+    dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+    dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+    wsl --update
+    wsl --install -d Ubuntu-24.04
+
+    Write-Host "`nInstalação concluída!" -ForegroundColor Green
+} else {
+    Write-Host "`nInstalação do WSL2 cancelada pelo usuário." -ForegroundColor Yellow
+}
 
 Write-Host "`n✅ Ambiente de desenvolvimento configurado com sucesso!" -ForegroundColor Green
