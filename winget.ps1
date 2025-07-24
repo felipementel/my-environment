@@ -106,7 +106,7 @@ if (Test-Path $PROFILE) {
 }
 
 Write-Host "`n✅ Instalando Terminal-Icons" -ForegroundColor Green
-Install-Module -Name Terminal-Icons -Repository PSGallery
+Install-Module -Name Terminal-Icons -Repository PSGallery -Force -Confirm:$false
 
 Write-Host "`n✅ Configurando Oh My Posh" -ForegroundColor Green
 
