@@ -14,7 +14,6 @@ $packages = @(
     @{ Id = "3TSoftwareLabs.Studio3T" },
     @{ Id = "Microsoft.DotNet.SDK.8" },
     @{ Id = "Microsoft.DotNet.SDK.9" },
-    @{ Id = "Microsoft.dotnet-interactive" },
     @{ Id = "Microsoft.Powershell" },
     @{ Id = "Logitech.LogiTune" },
     @{ Id = "Mobatek.MobaXterm" },
@@ -23,7 +22,8 @@ $packages = @(
     @{ Id = "Telegram.TelegramDesktop" },
     @{ Id = "Insomnia.Insomnia" },
     @{ Id = "DevToys-app.DevToys" },
-    @{ Id = "dbeaver.dbeaver" }
+    @{ Id = "DBeaver.DBeaver.Community" },
+    @{ Id = "GitHub.cli" }
 )
 
 Write-Host "🔧 Instalando pacotes via Winget..." -ForegroundColor Cyan
@@ -38,6 +38,10 @@ foreach ($pkg in $packages) {
     }
 }
 
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+# $env:PATH += ";$env:USERPROFILE\AppData\Local\Microsoft\dotnet"
+
+
 # Recarregar o perfil para garantir que o .NET esteja disponível no PATH
 if (Test-Path $PROFILE) {
     Write-Host "`n🔄 Recarregando perfil do PowerShell após instalação de SDKs..." -ForegroundColor Cyan
@@ -51,7 +55,6 @@ if (Test-Path $PROFILE) {
     New-Item -ItemType File -Path $PROFILE -Force | Out-Null
 }
 
-
 # Ferramentas .NET globais
 $packagesDotNet = @(
     "dotnet-reportgenerator-globaltool",
@@ -61,7 +64,8 @@ $packagesDotNet = @(
     "dotnet-trace",
     "dotnet-counters",
     "dotnet-monitor",
-    "dotnet-ef"
+    "dotnet-ef",
+    "dotnet-outdated-tool"
 )
 
 Write-Host "`n🔧 Instalando ferramentas .NET globais..." -ForegroundColor Cyan
