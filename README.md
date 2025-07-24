@@ -3,26 +3,42 @@
 + Abra o powershell como adminstrador;
 + Execute o comando abaixo;
 
-# Chocolatey
+<!-- # Chocolatey
 ````
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/felipementel/my-environment/main/chocolatey.ps1'))
 ````
-# Winget
+-->
+# Windows
+
+> [!WARNING]
+> Antes de executar esse script:
+> - Instale o PowershellCore via winget (winget install --id Microsoft.Powershell --source winget)
+> - Aceite os termos
+> - Copie o comando abaixo no PowershellCore e execute-o
+
+### Pronto, pode executar o comando abaixo
+
 ````
 Set-ExecutionPolicy Bypass -Scope Process -Force; $webClient = New-Object System.Net.WebClient; $webClient.CachePolicy = New-Object System.Net.Cache.RequestCachePolicy([System.Net.Cache.RequestCacheLevel]::NoCacheNoStore); iex ($webClient.DownloadString("https://raw.githubusercontent.com/felipementel/my-environment/main/winget.ps1"))
 ````
 
 # Linux
+> [!WARNING]
+> Antes de começar, execute esses comandos para habilitar features no windows
+> 
+> dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+> 
+> dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+### Pronto, pode executar o comando abaixo
 ````
 /bin/bash -c "$(curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/felipementel/my-environment/main/setup-linux.sh)"
 ````
-+ Faça um café.
 
 PS: Lembrar de trocar o path do PowerShell Core no Windows Terminal para C:\Program Files\PowerShell\7\pwsh.exe
 
 # O que instalar e configurar no Windows? 🪟
 ## 2. Habilitar Windows + V :notes:
-
 
 > [!IMPORTANT]
 > Configurar Fonte no terminal de forma manual !!!
