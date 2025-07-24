@@ -158,8 +158,8 @@ else
     echo -e "${GREEN}📦 Instalando Docker... ${NC}"
     sudo curl -fsSL https://get.docker.com -o install-docker.sh
     sudo sh install-docker.sh
-    #newgrp docker
-    sudo usermod -aG docker $linuxUser # $USER    
+    sudo usermod -aG docker $linuxUser # $USER
+    newgrp - docker
     echo -e "\n${GREEN}✅     Docker instalado com sucesso e acesso concedido ao user $linuxUser.${NC}"
 fi
 
