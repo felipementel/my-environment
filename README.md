@@ -1,14 +1,17 @@
-# 1. Chocolatey :boom:
+<!--# 1. Chocolatey :boom:
 
 + Abra o powershell como adminstrador;
 + Execute o comando abaixo;
 
-<!-- # Chocolatey
+ # Chocolatey
 ````
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/felipementel/my-environment/main/chocolatey.ps1'))
 ````
 -->
-# Windows
+
+# Guia para setup de máquinas
+
+## Windows
 
 > [!WARNING]
 > Antes de executar esse script:
@@ -22,7 +25,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 Set-ExecutionPolicy Bypass -Scope Process -Force; $webClient = New-Object System.Net.WebClient; $webClient.CachePolicy = New-Object System.Net.Cache.RequestCachePolicy([System.Net.Cache.RequestCacheLevel]::NoCacheNoStore); iex ($webClient.DownloadString("https://raw.githubusercontent.com/felipementel/my-environment/main/winget.ps1"))
 ````
 
-# Linux
+## Linux
 > [!WARNING]
 > Antes de começar, execute esses comandos para habilitar features no windows
 > 
