@@ -22,7 +22,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 ### Pronto, pode executar o comando abaixo
 
 ````
-Set-ExecutionPolicy Bypass -Scope Process -Force; $webClient = New-Object System.Net.WebClient; $webClient.CachePolicy = New-Object System.Net.Cache.RequestCachePolicy([System.Net.Cache.RequestCacheLevel]::NoCacheNoStore); iex ($webClient.DownloadString("https://raw.githubusercontent.com/felipementel/my-environment/main/winget.ps1"))
+Set-ExecutionPolicy Bypass -Scope Process -Force; $webClient = New-Object System.Net.WebClient; $webClient.CachePolicy = New-Object System.Net.Cache.RequestCachePolicy([System.Net.Cache.RequestCacheLevel]::NoCacheNoStore); iex ($webClient.DownloadString("https://raw.githubusercontent.com/birarodrigues/my-environment/main/winget.ps1"))
 ````
 
 ## Linux
@@ -35,7 +35,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; $webClient = New-Object System
 
 ### Pronto, pode executar o comando abaixo
 ````
-/bin/bash -c "$(curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/felipementel/my-environment/main/setup-linux.sh)"
+/bin/bash -c "$(curl -fsSL -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/birarodrigues/my-environment/main/setup-linux.sh)"
 ````
 
 PS: Lembrar de trocar o path do PowerShell Core no Windows Terminal para C:\Program Files\PowerShell\7\pwsh.exe
