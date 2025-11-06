@@ -13,7 +13,9 @@ $packages = @(
     @{ Id = "Microsoft.Powershell" },
     @{ Id = "JanDeDobbeleer.OhMyPosh" },
     @{ Id = "DevToys-app.DevToys" },
-    @{ Id = "GitHub.cli" }
+    @{ Id = "GitHub.cli" },
+    @{ Id = "LocalSend.LocalSend" },
+    @{ Id = "Bitwarden.Bitwarden" }
 )
 
 Write-Host "🔧 Instalando pacotes via Winget..." -ForegroundColor Cyan
