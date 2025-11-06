@@ -8,6 +8,13 @@ BLUE='\033[0;34m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color (reset)
 
+# --- CHECAGEM DE DIRETÓRIO LINUX ---
+if [[ "$PWD" == /mnt/c* || "$PWD" == /mnt/d* || "$PWD" == /mnt/e* || "$PWD" == /mnt/f* ]]; then
+  echo -e "${RED}❌ Detecção: Você está rodando o script a partir de uma pasta do Windows (${PWD})."
+  echo -e "${YELLOW}⚠️ Execute o script em uma pasta do Linux, ex: ~ (home). Saindo.${NC}"
+  exit 1
+fi
+
 ### Get info to configure Git account
 
 echo -e "${GREEN}Informações para configuração da conta Git ${NC}"
