@@ -96,7 +96,7 @@ else
     echo -e "\n${GREEN}✅     Azure CLI instalado com sucesso. ${NC}"
 fi
 
-### .NET
+### .NET - SEÇÃO CORRIGIDA
 
 echo -e "\n${BLUE}📦 Verificando se o .NET já está instalado... ${NC}"
 
@@ -104,16 +104,56 @@ if command -v dotnet &> /dev/null; then
     echo -e "\n🦘${YELLOW} .NET já está instalado. Pulando a instalação.${NC}"
 else
     echo -e "\n📦${YELLOW} Instalando .NET... ${NC}"
-    sudo curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh
-    chmod +x ./dotnet-install.sh
-    ./dotnet-install.sh --channel 8.0
-    echo -e "\n✅${GREEN}     .NET instalado com sucesso. ${NC}"
+    
+    # Criar diretório temporário para download
+    TEMP_DIR=$(mktemp -d)
+    cd "$TEMP_DIR"
+    
+    # Baixar o script de instalação
+    curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh
+    
+    # Verificar se o download foi bem-sucedido
+    if [ ! -f dotnet-install.sh ]; then
+        echo -e "${RED}❌ Erro ao baixar o script de instalação do .NET${NC}"
+        cd - > /dev/null
+        rm -rf "$TEMP_DIR"
+        exit 1
+    fi
+    
+    # Dar permissão de execução (com sudo se necessário)
+    if ! chmod +x ./dotnet-install.sh; then
+        echo -e "${YELLOW}⚠️ Tentando com sudo...${NC}"
+        sudo chmod +x ./dotnet-install.sh
+    fi
+    
+    # Executar a instalação
+    if ./dotnet-install.sh --channel 8.0; then
+        echo -e "\n✅${GREEN} .NET instalado com sucesso. ${NC}"
+    else
+        echo -e "\n${RED}❌ Erro na instalação do .NET${NC}"
+        cd - > /dev/null
+        rm -rf "$TEMP_DIR"
+        exit 1
+    fi
+    
+    # Voltar ao diretório original e limpar arquivos temporários
+    cd - > /dev/null
+    rm -rf "$TEMP_DIR"
 fi
 
 # ✅ Configura as variáveis de ambiente, mesmo que o .NET já esteja instalado
 echo -e "\n📦${YELLOW} Configurando as variáveis de ambiente do .NET ${NC}"
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
+# Adicionar ao .bashrc se não existir
+if ! grep -q "DOTNET_ROOT" ~/.bashrc; then
+    echo "" >> ~/.bashrc
+    echo "# .NET Environment Variables" >> ~/.bashrc
+    echo "export DOTNET_ROOT=\$HOME/.dotnet" >> ~/.bashrc
+    echo "export PATH=\$PATH:\$DOTNET_ROOT:\$DOTNET_ROOT/tools" >> ~/.bashrc
+    echo -e "${GREEN}✅ Variáveis de ambiente do .NET adicionadas ao ~/.bashrc${NC}"
+fi
 
 ### yq
 echo -e "\n${BLUE}📦 Verificando se o yq já está instalado... ${NC}"
@@ -198,7 +238,7 @@ echo -e "\n ${BLUE}Verificando o NVM...${NC}"
 if nvm >/dev/null 2>&1; then
     echo -e "\n✅ ${GREEN}NVM já está instalado.${NC}"
 else
-    echo -e "\n📥 ${YELLOW}Docker Compose Plugin não encontrado. Instalando...${NC}"
+    echo -e "\n📥 ${YELLOW}NVM não encontrado. Instalando...${NC}"
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
     if nvm >/dev/null 2>&1; then
