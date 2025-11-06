@@ -177,7 +177,6 @@ declare -a dotnet_tools=(
     "dotnet-sonarscanner"
     "dotnet-trace"
     "dotnet-counters"
-    "dotnet-monitor"
     "dotnet-ef"
 )
 
