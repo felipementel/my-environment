@@ -99,7 +99,7 @@ else
     echo -e "\n📦${YELLOW} Instalando .NET... ${NC}"
     sudo curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh
     chmod +x ./dotnet-install.sh
-    ./dotnet-install.sh --channel 9.0
+    ./dotnet-install.sh --channel 8.0
     echo -e "\n✅${GREEN}     .NET instalado com sucesso. ${NC}"
 fi
 
