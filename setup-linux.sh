@@ -255,6 +255,18 @@ else
     echo -e "${GREEN}✅ GitHub CLI instalado com sucesso.${NC}"
 fi
 
+### Azure CLI
+echo -e "\n${BLUE}📦 Verificando se o kubectl já está instalado... ${NC}"
+
+if command -v kubectl >/dev/null 2>&1; then
+    echo -e "${YELLOW}⚠️ kubectl já está instalado.${NC}"
+else
+    echo -e "\n${GREEN}✅ Instalando o kubectl...${NC}"
+    sudo curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    sudo sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+    kubectl version --client
+    echo -e "${GREEN}✅ kubectl instalado com sucesso.${NC}"
+fi
 ### Clean remote sources
 
 echo -e "\n${BLUE}✅ Removendo sources temporarios!${NC}"
