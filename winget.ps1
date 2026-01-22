@@ -12,8 +12,8 @@ $packages = @(
     @{ Id = "Microsoft.VisualStudio.2022.Enterprise" },
     @{ Id = "CodecGuide.K-LiteCodecPack.Standard" },
     @{ Id = "3TSoftwareLabs.Studio3T" },
-    @{ Id = "Microsoft.DotNet.SDK.8" },
     @{ Id = "Microsoft.DotNet.SDK.9" },
+    @{ Id = "Microsoft.DotNet.SDK.10" },
     @{ Id = "Microsoft.Powershell" },
     @{ Id = "Logitech.LogiTune" },
     @{ Id = "Mobatek.MobaXterm" },
@@ -23,7 +23,8 @@ $packages = @(
     @{ Id = "Insomnia.Insomnia" },
     @{ Id = "DevToys-app.DevToys" },
     @{ Id = "DBeaver.DBeaver.Community" },
-    @{ Id = "GitHub.cli" }
+    @{ Id = "GitHub.cli" },
+    @{ Id = "Kubernetes.kubectl"}
 )
 
 Write-Host "🔧 Instalando pacotes via Winget..." -ForegroundColor Cyan
@@ -34,7 +35,7 @@ foreach ($pkg in $packages) {
         Write-Host "✅ $($pkg.Id) já está instalado." -ForegroundColor Green
     } else {
         Write-Host "📦 Instalando $($pkg.Id)..." -ForegroundColor Yellow
-        winget install --id $($pkg.Id) --source winget --accept-package-agreements --accept-source-agreements
+        winget install -e --id $($pkg.Id) --source winget --accept-package-agreements --accept-source-agreements
     }
 }
 
