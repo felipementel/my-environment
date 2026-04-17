@@ -160,6 +160,15 @@ networkingMode=mirrored
 "@ | Out-File "$env:USERPROFILE\.wslconfig" -Encoding ASCII
 ````
 
+# Git Tools
+````
+dotnet tool list --global
+````
+````
+dotnet tool update --global --all
+````
+
+
 > Git
 ````
 eval "$(oh-my-posh init bash --config $HOME/AppData/Local/Programs/oh-my-posh/themes/clean-detailed.omp.json)"
