@@ -114,5 +114,17 @@ Import-Module -Name Terminal-Icons
 Write-Host "`n✅    Escrevendo o conteúdo no arquivo do perfil" -ForegroundColor Green
 Set-Content -Path $PROFILE -Value $conteudo
 
+# Recarregar perfil final
+Write-Host "`n🔄 Recarregando perfil do PowerShell (final)..." -ForegroundColor Cyan
+if (Test-Path $PROFILE) {
+    try {
+        . $PROFILE
+    } catch {
+        Write-Host "⚠️ Erro ao executar `$PROFILE: $_" -ForegroundColor Red
+    }
+} else {
+    Write-Host "ℹ️ Arquivo de perfil do PowerShell ainda não existe." -ForegroundColor Yellow
+}
+
 Write-Host "`n✅    Login no github" -ForegroundColor Green
 gh auth login
