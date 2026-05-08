@@ -122,8 +122,6 @@ if (Test-Path $PROFILE) {
     } catch {
         Write-Host "⚠️ Erro ao executar `$PROFILE: $_" -ForegroundColor Red
     }
-} else {
-    Write-Host "ℹ️ Arquivo de perfil do PowerShell ainda não existe." -ForegroundColor Yellow
 }
 
 Write-Host "`n✅    Login no github" -ForegroundColor Green
