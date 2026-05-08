@@ -113,3 +113,6 @@ Import-Module -Name Terminal-Icons
 
 Write-Host "`n✅    Escrevendo o conteúdo no arquivo do perfil" -ForegroundColor Green
 Set-Content -Path $PROFILE -Value $conteudo
+
+Write-Host "`n✅    Login no github" -ForegroundColor Green
+gh auth login
