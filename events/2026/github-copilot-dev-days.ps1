@@ -107,7 +107,7 @@ New-Item -Path $PROFILE -Type File -Force
 
 Write-Host "`n✅    Criando conteúdo para o arquivo do perfil" -ForegroundColor Green
 $conteudo = @"
-oh-my-posh init pwsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json' | Invoke-Expression
+oh-my-posh init pwsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/1_shell.omp.json' | Invoke-Expression
 Import-Module -Name Terminal-Icons
 "@
 
