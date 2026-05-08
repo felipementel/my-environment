@@ -8,6 +8,8 @@ $email = (Read-Host "Digite seu e-mail ").ToLower()
 $packages = @(
     @{ Id = "CoreyButler.NVMforWindows" },
     @{ Id = "Git.Git" },
+    @{ Id = "GitHub.cli" },
+    @{ Id = "GitHub.Copilot" },
     @{ Id = "Microsoft.VisualStudioCode" },
     @{ Id = "Microsoft.VisualStudio.2022.Enterprise" },
     @{ Id = "CodecGuide.K-LiteCodecPack.Standard" },
@@ -23,7 +25,6 @@ $packages = @(
     @{ Id = "Insomnia.Insomnia" },
     @{ Id = "DevToys-app.DevToys" },
     @{ Id = "DBeaver.DBeaver.Community" },
-    @{ Id = "GitHub.cli" },
     @{ Id = "Kubernetes.kubectl"}
 )
 
@@ -80,14 +81,13 @@ foreach ($package in $packagesDotNet) {
 }
 
 # Extensão GitHub CLI Copilot
-Write-Host "`n🤖 Instalando extensão Copilot do GitHub CLI..." -ForegroundColor Cyan
-gh extension install github/gh-copilot
-# https://github.com/github/gh-copilot
+Write-Host "`n🤖 Instalando extensão Copilot do GitHub Agentic Workflow..." -ForegroundColor Cyan
+gh extension install github/gh-aw
+# https://github.com/github/gh-aw
 
 Write-Host "`n🤖 Instalando extensão GitHub Models..." -ForegroundColor Cyan
 gh extension install https://github.com/github/gh-models
 # https://docs.github.com/en/github-models/use-github-models/integrating-ai-models-into-your-development-workflow#using-ai-models-with-github-actions
-
 
 # Atualizar ajuda do PowerShell
 Write-Host "`n📚 Atualizando ajuda do PowerShell..." -ForegroundColor Cyan
