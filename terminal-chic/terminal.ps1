@@ -1,9 +1,6 @@
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 Write-Host "Informações para configuração da conta Git" -ForegroundColor Cyan
 
-$nome = Read-Host "Digite seu nome"
-$email = (Read-Host "Digite seu e-mail").ToLower()
-
 # Lista de pacotes a instalar via Winget
 $packages = @(
 
@@ -39,16 +36,6 @@ if (Test-Path $PROFILE) {
     Write-Host "ℹ️ Criando arquivo de perfil do PowerShell vazio..." -ForegroundColor Yellow
     New-Item -ItemType File -Path $PROFILE -Force | Out-Null
 }
-
-# Extensão GitHub CLI Copilot
-Write-Host "`n🤖 Instalando extensão Copilot do GitHub Agentic Workflow..." -ForegroundColor Cyan
-gh extension install github/gh-aw
-# https://github.com/github/gh-aw
-
-Write-Host "`n🤖 Instalando extensão GitHub Models..." -ForegroundColor Cyan
-gh extension install https://github.com/github/gh-models
-# https://docs.github.com/en/github-models/use-github-models/integrating-ai-models-into-your-development-workflow#using-ai-models-with-github-actions
-
 
 # Atualizar ajuda do PowerShell
 Write-Host "`n📚 Atualizando ajuda do PowerShell..." -ForegroundColor Cyan
@@ -96,6 +83,3 @@ if (Test-Path $PROFILE) {
         Write-Host "⚠️ Erro ao executar `$PROFILE: $_" -ForegroundColor Red
     }
 }
-
-Write-Host "`n✅    Login no github" -ForegroundColor Green
-gh auth login
