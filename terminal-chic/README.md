@@ -7,7 +7,13 @@ winget install cURL --id cURL.cURL --source winget
 ## Instalação do PowerShell Core
 
 ````
-$scriptPath = Join-Path $env:TEMP "PowerShell-7.6.2-win-x64.msi"; curl.exe -L -o $scriptPath "https://github.com/PowerShell/PowerShell/releases/download/v7.6.2/PowerShell-7.6.2-win-x64.msi"; if ($LASTEXITCODE -eq 0) { Start-Process -FilePath "msiexec.exe" -ArgumentList "/i `"$scriptPath`" /qn" -Wait }
+$scriptPath = Join-Path $env:TEMP "PowerShell-7.6.2-win-x64.msi"
+
+Invoke-WebRequest `
+    -Uri "https://github.com/PowerShell/PowerShell/releases/download/v7.6.2/PowerShell-7.6.2-win-x64.msi" `
+    -OutFile $scriptPath
+
+Start-Process msiexec.exe -ArgumentList "/i `"$scriptPath`"" -Wait
 ````
 
 ## Instalação dos scripts via winget
