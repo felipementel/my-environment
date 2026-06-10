@@ -12,7 +12,7 @@ $scriptPath = Join-Path $env:TEMP "PowerShell-7.6.2-win-x64.msi"; curl.exe -L -o
 
 ## Instalação dos scripts via winget
 ````
-$scriptPath = Join-Path $env:TEMP "github-copilot-dev-days.ps1"; curl.exe -L -o $scriptPath "https://raw.githubusercontent.com/felipementel/my-environment/refs/heads/main/terminal-chic/terminal.ps1"; if ($LASTEXITCODE -eq 0) { pwsh -ExecutionPolicy Bypass -File $scriptPath }
+$scriptPath = Join-Path $env:TEMP "terminal.ps1"; curl.exe -L -o $scriptPath "https://raw.githubusercontent.com/felipementel/my-environment/refs/heads/main/terminal-chic/terminal.ps1"; if ($LASTEXITCODE -eq 0) { pwsh -ExecutionPolicy Bypass -File $scriptPath }
 ````
 
 ### Themes do OhMyPosh
