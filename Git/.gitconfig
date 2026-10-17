@@ -1,0 +1,15 @@
+[init]
+  defaultBranch = main
+
+[includeIf "gitdir:C:/Proj/Avanade/Client/**"]
+  path = C:/Users/felipe.augusto/.gitconfig-client
+
+[user]
+  name = Felipe Augusto
+  email = felipementel@hotmail.com
+
+[http]
+  sslverify = false
+
+[safe]
+  directory = C:/Proj/Avanade/client/**
